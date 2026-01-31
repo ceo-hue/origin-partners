@@ -600,20 +600,35 @@ p {
    ======================================== */
 
 @media (max-width: 1024px) {
+  /* 모바일에서 가로 스크롤 비활성화 - 세로로 전환 */
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
   .horizontal-wrapper {
     height: auto;
+    overflow: visible;
   }
 
   .horizontal-container {
     flex-direction: column;
     width: 100%;
+    transform: none !important; /* GSAP 가로 이동 비활성화 */
   }
 
   .h-slide {
     width: 100%;
+    max-width: 100vw;
     height: auto;
     min-height: 100vh;
     padding: 100px 24px;
+    flex-shrink: 0;
+  }
+
+  .h-slide .content {
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .philosophy-number {
@@ -630,6 +645,12 @@ p {
 
   .service-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* 포트폴리오/클라이언트도 세로 1열로 */
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .team-stats {
@@ -662,16 +683,26 @@ p {
    ======================================== */
 
 @media (max-width: 768px) {
+  /* 전체 오버플로우 제어 - 가로 스크롤 완전 차단 */
+  html {
+    overflow-x: hidden;
+  }
+
   body {
     font-size: 14px;
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
   }
 
   h1 {
     font-size: clamp(2.5rem, 12vw, 4rem);
+    word-break: keep-all;
   }
 
   h2 {
     font-size: clamp(1.75rem, 8vw, 2.5rem);
+    word-break: keep-all;
   }
 
   h3 {
@@ -681,6 +712,15 @@ p {
   .h-slide {
     padding: 80px 20px;
     min-height: 100svh; /* svh = small viewport height, 모바일 주소창 고려 */
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow: hidden;
+  }
+
+  .h-slide .content {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .slide-hero .tagline {
@@ -704,6 +744,7 @@ p {
   .capability-tags {
     gap: 8px;
     margin-top: 30px;
+    max-width: 100%;
   }
 
   .tag {
@@ -729,6 +770,7 @@ p {
   .journey-steps {
     gap: 8px;
     margin-top: 35px;
+    max-width: 100%;
   }
 
   .journey-step span {
@@ -744,6 +786,7 @@ p {
   .vertical-section {
     padding: 60px 16px;
     min-height: auto;
+    overflow: hidden;
   }
 
   .section-header {
@@ -784,20 +827,24 @@ p {
     margin-bottom: 8px;
   }
 
-  /* 포트폴리오 모바일 */
+  /* 포트폴리오/클라이언트 모바일 - 세로 1열 */
   .portfolio-grid {
+    grid-template-columns: 1fr;
     gap: 16px;
   }
 
   .portfolio-item {
     padding: 24px 20px;
     gap: 16px;
+    flex-direction: row;
+    text-align: left;
   }
 
   .portfolio-logo {
     width: 50px;
     height: 50px;
     font-size: 1.2rem;
+    flex-shrink: 0;
   }
 
   .portfolio-info h4 {
@@ -825,6 +872,7 @@ p {
   /* 연락처 모바일 */
   .contact-section {
     padding: 80px 20px 100px;
+    overflow: hidden;
   }
 
   .contact-desc .line {
@@ -919,21 +967,28 @@ p {
     font-size: 2rem;
   }
 
-  /* 팀 통계 1열 */
+  /* 팀 통계 2x2 유지 */
   .team-stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
 
-  /* 포트폴리오 세로 배치 */
+  /* 포트폴리오/클라이언트 - 세로 1열 유지 */
   .portfolio-item {
-    flex-direction: column;
-    text-align: center;
+    flex-direction: row;
+    text-align: left;
     padding: 20px 16px;
   }
 
   .portfolio-logo {
-    margin-bottom: 10px;
+    width: 45px;
+    height: 45px;
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+
+  .portfolio-info {
+    flex: 1;
   }
 
   /* 연락처 */
