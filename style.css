@@ -91,17 +91,50 @@ p {
   width: 100%;
 }
 
-/* Slide Backgrounds */
+/* ========================================
+   Slide Backgrounds - 이미지 + 오버레이
+   ======================================== */
+
+/* Hero: 추상적 테크 이미지 */
 .slide-hero {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+  background:
+    linear-gradient(135deg, rgba(10, 10, 10, 0.85) 0%, rgba(26, 26, 46, 0.9) 100%),
+    url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80') center/cover no-repeat;
 }
 
-.slide-vision,
-.slide-philosophy,
-.slide-difference,
-.slide-network,
+/* Vision: 협업/팀워크 이미지 */
+.slide-vision {
+  background:
+    linear-gradient(180deg, rgba(10, 10, 10, 0.88) 0%, rgba(15, 15, 30, 0.92) 100%),
+    url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80') center/cover no-repeat;
+}
+
+/* Philosophy (01 Mission): 빛나는 아이디어 */
+.slide-philosophy {
+  background:
+    linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(20, 20, 35, 0.88) 100%),
+    url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1920&q=80') center/cover no-repeat;
+}
+
+/* Difference (02 전문가): 네트워크/연결 */
+.slide-difference {
+  background:
+    linear-gradient(180deg, rgba(10, 10, 10, 0.9) 0%, rgba(15, 20, 35, 0.88) 100%),
+    url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&q=80') center/cover no-repeat;
+}
+
+/* Network (03 파트너): 도시/판교 느낌 */
+.slide-network {
+  background:
+    linear-gradient(135deg, rgba(10, 10, 10, 0.88) 0%, rgba(20, 25, 40, 0.9) 100%),
+    url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80') center/cover no-repeat;
+}
+
+/* Growth (04 여정): 상승/성장 */
 .slide-growth {
-  background: #0a0a0a;
+  background:
+    linear-gradient(180deg, rgba(10, 10, 10, 0.88) 0%, rgba(15, 15, 30, 0.92) 100%),
+    url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80') center/cover no-repeat;
 }
 
 .slide-hero h1 {
@@ -324,8 +357,8 @@ p {
 }
 
 .service-card {
-  background: linear-gradient(145deg, #111 0%, #0a0a0a 100%);
-  border: 1px solid #222;
+  background: linear-gradient(145deg, rgba(20, 20, 30, 0.8) 0%, rgba(10, 10, 15, 0.9) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   padding: 40px;
   position: relative;
@@ -333,6 +366,8 @@ p {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
   transform: translateY(60px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .service-card.animate {
@@ -341,9 +376,11 @@ p {
 }
 
 .service-card:hover {
-  border-color: #333;
+  border-color: rgba(255, 255, 255, 0.15);
   transform: translateY(-10px);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(100, 130, 255, 0.05);
 }
 
 .service-card::before {
@@ -406,11 +443,24 @@ p {
 }
 
 /* ========================================
-   Portfolio Section
+   Service Section - 미세 도트 패턴
+   ======================================== */
+
+#service-section {
+  background:
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0),
+    linear-gradient(180deg, #0a0a0a 0%, #0d0d15 100%);
+  background-size: 40px 40px, 100% 100%;
+}
+
+/* ========================================
+   Portfolio/Clients Section - 부드러운 웨이브
    ======================================== */
 
 #portfolio-section {
-  background: linear-gradient(180deg, #0a0a0a 0%, #0f0f1a 100%);
+  background:
+    linear-gradient(180deg, rgba(10, 10, 10, 0.95) 0%, rgba(15, 15, 26, 0.95) 100%),
+    url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1920&q=80') center/cover no-repeat;
 }
 
 .portfolio-grid {
@@ -426,12 +476,14 @@ p {
   align-items: center;
   gap: 20px;
   padding: 30px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid #1a1a1a;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 12px;
   transition: all 0.3s;
   opacity: 0;
   transform: translateY(40px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .portfolio-item.animate {
@@ -440,8 +492,9 @@ p {
 }
 
 .portfolio-item:hover {
-  border-color: #333;
-  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .portfolio-logo {
@@ -479,11 +532,16 @@ p {
 }
 
 /* ========================================
-   Team Stats Section
+   Team Stats Section - 그리드 패턴
    ======================================== */
 
 #team-section {
-  background: #0a0a0a;
+  background:
+    linear-gradient(rgba(10, 10, 10, 0.97) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 10, 10, 0.97) 1px, transparent 1px),
+    linear-gradient(180deg, #0d0d15 0%, #0a0a0a 100%);
+  background-size: 80px 80px, 80px 80px, 100% 100%;
+  background-position: center center;
 }
 
 .team-stats {
@@ -524,11 +582,19 @@ p {
 }
 
 /* ========================================
-   Contact Section
+   Contact Section - 우주/별 패턴 (Origin = 시작)
    ======================================== */
 
 .contact-section {
-  background: linear-gradient(180deg, #0a0a0a 0%, #050510 100%);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(30, 40, 80, 0.3) 0%, transparent 60%),
+    radial-gradient(circle at 20% 80%, rgba(255,255,255,0.02) 1px, transparent 1px),
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.02) 1px, transparent 1px),
+    radial-gradient(circle at 40% 40%, rgba(255,255,255,0.015) 1px, transparent 1px),
+    radial-gradient(circle at 60% 70%, rgba(255,255,255,0.02) 1px, transparent 1px),
+    radial-gradient(circle at 90% 90%, rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(180deg, #0a0a0a 0%, #050510 100%);
+  background-size: 100% 100%, 3px 3px, 5px 5px, 7px 7px, 4px 4px, 6px 6px, 100% 100%;
   text-align: center;
   position: relative;
 }
@@ -728,6 +794,71 @@ p {
   /* ===== 스크롤 인디케이터 ===== */
   .scroll-indicator {
     display: block;
+  }
+
+  /* ===== 모바일 배경 이미지 최적화 ===== */
+  .slide-hero,
+  .slide-vision,
+  .slide-philosophy,
+  .slide-difference,
+  .slide-network,
+  .slide-growth {
+    background-attachment: scroll !important; /* 모바일에서 fixed 비활성화 */
+  }
+
+  /* 모바일용 작은 이미지로 교체 */
+  .slide-hero {
+    background:
+      linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(26, 26, 46, 0.95) 100%),
+      url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=60') center/cover no-repeat !important;
+  }
+
+  .slide-vision {
+    background:
+      linear-gradient(180deg, rgba(10, 10, 10, 0.92) 0%, rgba(15, 15, 30, 0.95) 100%),
+      url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=60') center/cover no-repeat !important;
+  }
+
+  .slide-philosophy {
+    background:
+      linear-gradient(135deg, rgba(10, 10, 10, 0.93) 0%, rgba(20, 20, 35, 0.92) 100%),
+      url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=60') center/cover no-repeat !important;
+  }
+
+  .slide-difference {
+    background:
+      linear-gradient(180deg, rgba(10, 10, 10, 0.93) 0%, rgba(15, 20, 35, 0.92) 100%),
+      url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=60') center/cover no-repeat !important;
+  }
+
+  .slide-network {
+    background:
+      linear-gradient(135deg, rgba(10, 10, 10, 0.92) 0%, rgba(20, 25, 40, 0.94) 100%),
+      url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=60') center/cover no-repeat !important;
+  }
+
+  .slide-growth {
+    background:
+      linear-gradient(180deg, rgba(10, 10, 10, 0.92) 0%, rgba(15, 15, 30, 0.95) 100%),
+      url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=60') center/cover no-repeat !important;
+  }
+
+  #portfolio-section {
+    background:
+      linear-gradient(180deg, rgba(10, 10, 10, 0.97) 0%, rgba(15, 15, 26, 0.97) 100%),
+      url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=60') center/cover no-repeat !important;
+  }
+
+  /* 모바일에서 backdrop-filter 비활성화 (성능) */
+  .service-card,
+  .portfolio-item {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(20, 20, 30, 0.95) !important;
+  }
+
+  .portfolio-item {
+    background: rgba(255, 255, 255, 0.05) !important;
   }
 }
 
