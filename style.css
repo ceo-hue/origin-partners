@@ -1,0 +1,683 @@
+/* ========================================
+   Origin Partners - Advanced Styles
+   ======================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Noto Sans KR", sans-serif;
+  background: #0a0a0a;
+  color: #fff;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ========================================
+   Typography
+   ======================================== */
+
+h1, h2, h3, h4 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(3rem, 10vw, 8rem);
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+p {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  color: #999;
+}
+
+/* ========================================
+   Split Text Animation Base
+   ======================================== */
+
+.split-text .line {
+  display: block;
+  overflow: hidden;
+}
+
+/* ========================================
+   Horizontal Scroll Section
+   ======================================== */
+
+.horizontal-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.horizontal-container {
+  display: flex;
+  width: fit-content;
+  height: 100vh;
+  will-change: transform;
+}
+
+.h-slide {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 5vw;
+  position: relative;
+}
+
+.h-slide .content {
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* Slide Backgrounds */
+.slide-hero {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+}
+
+.slide-vision,
+.slide-philosophy,
+.slide-difference,
+.slide-network,
+.slide-growth {
+  background: #0a0a0a;
+}
+
+.slide-hero h1 {
+  margin-bottom: 1.5rem;
+}
+
+.slide-hero .tagline {
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
+  color: #666;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.5;
+}
+
+.scroll-indicator span {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #666;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, #fff, transparent);
+  animation: scrollPulse 2s infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.2); }
+}
+
+/* Vision Slide */
+.slide-vision {
+  background: #0a0a0a;
+}
+
+.slide-vision h2 {
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #fff 0%, #666 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.vision-text .line {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+/* Philosophy Slides */
+.slide-philosophy,
+.slide-difference {
+  background: #0a0a0a;
+}
+
+.philosophy-number {
+  font-size: clamp(4rem, 8vw, 10rem);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.05);
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  line-height: 1;
+}
+
+.philosophy-desc .line {
+  font-size: clamp(1rem, 1.8vw, 1.35rem);
+  color: #777;
+  margin-top: 0.5rem;
+}
+
+/* Capability Tags */
+.capability-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.tag {
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  font-size: 0.9rem;
+  color: #888;
+  transition: all 0.3s;
+}
+
+.tag:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+/* Network Stats */
+.network-stats {
+  display: flex;
+  gap: 60px;
+  margin-top: 50px;
+}
+
+.network-stat {
+  text-align: left;
+}
+
+.network-number {
+  display: block;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.network-label {
+  display: block;
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* Journey Steps */
+.journey-steps {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-top: 50px;
+}
+
+.journey-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.step-dot {
+  width: 16px;
+  height: 16px;
+  background: #333;
+  border-radius: 50%;
+  border: 2px solid #444;
+  transition: all 0.3s;
+}
+
+.journey-step span {
+  font-size: 0.85rem;
+  color: #666;
+  transition: color 0.3s;
+}
+
+.journey-step.active .step-dot {
+  background: #fff;
+  border-color: #fff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.journey-step.active span {
+  color: #fff;
+  font-weight: 600;
+}
+
+.journey-line {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, #333, #444);
+  min-width: 40px;
+  max-width: 80px;
+}
+
+/* ========================================
+   Vertical Sections
+   ======================================== */
+
+.vertical-section {
+  min-height: 100vh;
+  padding: 120px 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section-header {
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.section-header h2 {
+  margin-bottom: 1.5rem;
+}
+
+.section-desc .line {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  color: #666;
+}
+
+/* ========================================
+   Service Cards
+   ======================================== */
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background: linear-gradient(145deg, #111 0%, #0a0a0a 100%);
+  border: 1px solid #222;
+  border-radius: 16px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+.service-card.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-card:hover {
+  border-color: #333;
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #fff, transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.service-card:hover::before {
+  opacity: 0.3;
+}
+
+.card-number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.08);
+  margin-bottom: 20px;
+}
+
+.service-card h3 {
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.service-card > p {
+  color: #888;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.card-features {
+  list-style: none;
+  padding: 0;
+}
+
+.card-features li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.card-features li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  background: #444;
+  border-radius: 50%;
+}
+
+/* ========================================
+   Portfolio Section
+   ======================================== */
+
+#portfolio-section {
+  background: linear-gradient(180deg, #0a0a0a 0%, #0f0f1a 100%);
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.portfolio-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid #1a1a1a;
+  border-radius: 12px;
+  transition: all 0.3s;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.portfolio-item.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfolio-item:hover {
+  border-color: #333;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.portfolio-logo {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #222 0%, #111 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #444;
+  flex-shrink: 0;
+}
+
+.portfolio-info h4 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.portfolio-category {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: #555;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.portfolio-info p {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* ========================================
+   Team Stats Section
+   ======================================== */
+
+#team-section {
+  background: #0a0a0a;
+}
+
+.team-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.stat-item {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.stat-item.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stat-number {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff 0%, #555 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ========================================
+   Contact Section
+   ======================================== */
+
+.contact-section {
+  background: linear-gradient(180deg, #0a0a0a 0%, #050510 100%);
+  text-align: center;
+  position: relative;
+}
+
+.contact-section .content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-section h2 {
+  margin-bottom: 2rem;
+}
+
+.contact-desc .line {
+  font-size: 1.25rem;
+  color: #666;
+}
+
+.contact-email {
+  display: inline-block;
+  margin-top: 3rem;
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  color: #fff;
+  text-decoration: none;
+  padding: 20px 50px;
+  border: 1px solid #333;
+  border-radius: 50px;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-email::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.5s;
+}
+
+.contact-email:hover {
+  border-color: #555;
+  transform: scale(1.05);
+}
+
+.contact-email:hover::before {
+  left: 100%;
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.footer p {
+  font-size: 0.8rem;
+  color: #444;
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .horizontal-wrapper {
+    height: auto;
+  }
+
+  .horizontal-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .h-slide {
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    padding: 100px 24px;
+  }
+
+  .philosophy-number {
+    position: relative;
+    top: auto;
+    right: auto;
+    font-size: 4rem;
+    margin-bottom: 20px;
+  }
+
+  .vertical-section {
+    padding: 80px 24px;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .network-stats {
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  .journey-steps {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .journey-line {
+    display: none;
+  }
+
+  .capability-tags {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .team-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-item {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ========================================
+   Utility Classes
+   ======================================== */
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+}
