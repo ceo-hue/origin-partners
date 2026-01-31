@@ -55,6 +55,8 @@ p {
 .split-text .line {
   display: block;
   overflow: hidden;
+  padding-bottom: 0.15em; /* descender(g, y, p 등) 보호 */
+  margin-bottom: -0.15em; /* 패딩으로 인한 여백 상쇄 */
 }
 
 /* ========================================
