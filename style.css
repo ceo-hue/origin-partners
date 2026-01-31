@@ -179,10 +179,6 @@ p {
 }
 
 /* Vision Slide */
-.slide-vision {
-  background: #0a0a0a;
-}
-
 .slide-vision h2 {
   margin-bottom: 2rem;
   background: linear-gradient(135deg, #fff 0%, #666 100%);
@@ -198,11 +194,6 @@ p {
 }
 
 /* Philosophy Slides */
-.slide-philosophy,
-.slide-difference {
-  background: #0a0a0a;
-}
-
 .philosophy-number {
   font-size: clamp(4rem, 8vw, 10rem);
   font-weight: 700;
