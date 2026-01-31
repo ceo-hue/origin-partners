@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Origin Partners | 스타트업 파트너</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="viewport">
+    <div class="slides">
+
+      <section class="slide intro">
+        <div class="content-wrapper">
+          <h1>Origin Partners</h1>
+          <p>스타트업을 돕는 스타트업 파트너 그룹</p>
+        </div>
+      </section>
+
+      <section class="slide vision">
+        <div class="content-wrapper">
+          <h2>We Build Together</h2>
+          <p>우리는 투자자가 아니라 창업의 처음부터 끝까지 함께하는 파트너입니다.</p>
+        </div>
+      </section>
+
+      <section class="slide service">
+        <div class="content-wrapper">
+          <h2>What We Do</h2>
+          <div class="grid-container">
+            <div class="card">
+              <div class="card-image" style="background-color: #333;"></div>
+              <div class="card-text">
+                <h3>초기 사업 구조 설계</h3>
+                <p>비즈니스 모델 진단 및 수익 구조 최적화 전략을 제안합니다.</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-image" style="background-color: #444;"></div>
+              <div class="card-text">
+                <h3>PMF 검증</h3>
+                <p>시장 분석과 유저 테스트를 통해 제품의 적합성을 확인합니다.</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-image" style="background-color: #555;"></div>
+              <div class="card-text">
+                <h3>성장 전략</h3>
+                <p>시리즈 A 이상의 성장을 위한 마케팅 파트너십을 지원합니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide contact">
+        <div class="content-wrapper">
+          <h2>Let’s Build</h2>
+          <p>partner@originpartners.co</p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif;
+  overflow: hidden; /* PC에서는 스크롤바 숨김 */
+  background: #000;
+  color: #fff;
+}
+
+.viewport {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  width: 400vw;
+  height: 100vh;
+  transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+  will-change: transform;
+}
+
+.slide {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5vw;
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  width: 100%;
+}
+
+h1, h2 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 20px; }
+
+/* Grid Layout */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.card {
+  background: #1a1a1a;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.card:hover { transform: translateY(-10px); background: #252525; }
+
+.card-image { height: 180px; width: 100%; }
+
+.card-text { padding: 20px; }
+
+.card-text h3 { font-size: 1.25rem; margin-bottom: 10px; color: #fff; }
+
+.card-text p { font-size: 0.9rem; color: #ccc; line-height: 1.6; }
+
+/* 모바일 대응: 세로 스크롤로 변경 */
+@media (max-width: 1024px) {
+  body { overflow-y: auto; }
+  .viewport { height: auto; }
+  .slides { display: block; width: 100%; height: auto; transform: none !important; }
+  .slide { height: auto; padding: 80px 24px; }
+}
+
+let currentSlide = 0;
+const slides = document.querySelector(".slides");
+const totalSlides = document.querySelectorAll(".slide").length;
+let isScrolling = false;
+
+function moveSlide(direction) {
+  if (isScrolling) return;
+  
+  // 모바일/태블릿(세로 스크롤 모드)에서는 작동 방지
+  if (window.innerWidth <= 1024) return;
+
+  if (direction === "down") {
+    if (currentSlide >= totalSlides - 1) return;
+    currentSlide++;
+  } else {
+    if (currentSlide <= 0) return;
+    currentSlide--;
+  }
+
+  isScrolling = true;
+  slides.style.transform = `translateX(-${currentSlide * 100}vw)`;
+
+  // 애니메이션 종료 후 잠금 해제
+  setTimeout(() => {
+    isScrolling = false;
+  }, 1000);
+}
+
+window.addEventListener("wheel", (e) => {
+  if (Math.abs(e.deltaY) < 40) return; // 미세 스크롤 무시
+  
+  if (e.deltaY > 0) {
+    moveSlide("down");
+  } else {
+    moveSlide("up");
+  }
+}, { passive: true });
+
+// 키보드 지원
+window.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowRight") moveSlide("down");
+  if (e.key === "ArrowLeft") moveSlide("up");
+});

@@ -32,6 +32,41 @@ function isMobile() {
   return window.innerWidth <= 1024;
 }
 
+// 모바일에서 모든 요소 즉시 표시 (애니메이션 비활성화)
+function showAllElementsOnMobile() {
+  if (!isMobile()) return;
+
+  // 서비스 카드 표시
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.style.opacity = '1';
+    card.style.transform = 'none';
+  });
+
+  // 포트폴리오 아이템 표시
+  document.querySelectorAll('.portfolio-item').forEach(item => {
+    item.style.opacity = '1';
+    item.style.transform = 'none';
+  });
+
+  // 통계 아이템 표시
+  document.querySelectorAll('.stat-item').forEach(item => {
+    item.style.opacity = '1';
+    item.style.transform = 'none';
+  });
+
+  // 스플릿 텍스트 라인 표시
+  document.querySelectorAll('.split-text .line').forEach(line => {
+    line.style.opacity = '1';
+    line.style.transform = 'none';
+  });
+
+  // 추가 요소들 표시
+  document.querySelectorAll('.capability-tags, .network-stats, .journey-steps').forEach(el => {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+  });
+}
+
 // ========================================
 // Horizontal Scroll (CSS Sticky 방식)
 // ========================================
@@ -186,8 +221,29 @@ function initVerticalAnimations() {
 
 function init() {
   document.fonts.ready.then(() => {
+    // 모바일: 모든 요소 즉시 표시
+    if (isMobile()) {
+      showAllElementsOnMobile();
+      // 통계 숫자 카운트 애니메이션만 실행
+      initStatCounters();
+      return;
+    }
+
+    // PC: 전체 애니메이션 실행
     initHorizontalScroll();
     initVerticalAnimations();
+  });
+}
+
+// 모바일용 통계 카운터 (애니메이션 없이)
+function initStatCounters() {
+  const statItems = document.querySelectorAll('.stat-item');
+  statItems.forEach((item) => {
+    const numberEl = item.querySelector('.stat-number');
+    const targetCount = parseInt(numberEl.dataset.count);
+    if (!isNaN(targetCount)) {
+      numberEl.textContent = targetCount;
+    }
   });
 }
 
