@@ -206,6 +206,32 @@ p {
   line-height: 1;
 }
 
+/* Slide Label (영문 타이틀 + 번호) */
+.slide-label {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.slide-label .label-title {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.15);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.slide-label .label-number {
+  font-size: clamp(4rem, 8vw, 10rem);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.05);
+  line-height: 1;
+}
+
 .philosophy-desc .line {
   font-size: clamp(1rem, 1.8vw, 1.35rem);
   color: #777;
@@ -711,6 +737,25 @@ p {
     color: rgba(255, 255, 255, 0.08);
   }
 
+  /* Slide Label 모바일 */
+  .slide-label {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+
+  .slide-label .label-title {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  .slide-label .label-number {
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.08);
+  }
+
   /* ===== 세로 섹션 스타일 ===== */
   .vertical-section {
     padding: 60px 24px;
@@ -891,6 +936,14 @@ p {
   }
 
   .philosophy-number {
+    font-size: 2.5rem;
+  }
+
+  .slide-label .label-title {
+    font-size: 0.75rem;
+  }
+
+  .slide-label .label-number {
     font-size: 2.5rem;
   }
 
@@ -1090,6 +1143,14 @@ p {
   }
 
   .philosophy-number {
+    font-size: 2rem;
+  }
+
+  .slide-label .label-title {
+    font-size: 0.7rem;
+  }
+
+  .slide-label .label-number {
     font-size: 2rem;
   }
 
