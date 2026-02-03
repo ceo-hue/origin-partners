@@ -444,6 +444,11 @@ p {
   margin-bottom: 15px;
 }
 
+.card-title-sub {
+  display: block;
+  margin-top: 2px;
+}
+
 .service-card > p {
   color: #888;
   font-size: 0.95rem;
