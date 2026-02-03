@@ -154,8 +154,14 @@ p {
   margin-bottom: 1.5rem;
 }
 
+.slide-hero .hero-slogan {
+  font-size: clamp(1.3rem, 2.5vw, 2rem);
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
 .slide-hero .tagline {
-  font-size: clamp(1.25rem, 2.5vw, 2rem);
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
   color: #666;
 }
 
@@ -816,7 +822,8 @@ p {
 
   .slide-label .label-title {
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.2);
+    color: var(--point-light);
+    opacity: 0.6;
   }
 
   .slide-label .label-number {
