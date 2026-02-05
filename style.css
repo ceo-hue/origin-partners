@@ -206,6 +206,17 @@ p {
   background-clip: text;
 }
 
+/* 그라데이션 텍스트 내부 포인트 컬러 강제 적용 */
+.slide-vision h2 .point-color {
+  -webkit-text-fill-color: var(--point-light);
+}
+
+/* 모든 h2 내 포인트 컬러 */
+.h-slide h2 .point-color {
+  color: var(--point-light);
+  -webkit-text-fill-color: var(--point-light);
+}
+
 .vision-text .line {
   font-size: clamp(1.1rem, 2vw, 1.5rem);
   color: #888;

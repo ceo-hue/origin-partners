@@ -16,7 +16,7 @@ function animateSplitText(element, delay = 0) {
   if (element.classList.contains('animated')) return;
 
   // 애니메이션 완료 후 인라인 스타일 고정
-  gsap.fromTo(lines,
+  const tween = gsap.fromTo(lines,
     { y: 50, opacity: 0 },
     {
       y: 0,
@@ -26,11 +26,13 @@ function animateSplitText(element, delay = 0) {
       delay: delay,
       ease: "power3.out",
       onComplete: () => {
-        // 애니메이션 완료 후 스타일 고정 (GSAP 리셋 방지)
+        // 애니메이션 완료 후 GSAP 제어 해제 + 스타일 고정
         lines.forEach(line => {
           line.style.opacity = '1';
           line.style.transform = 'translateY(0)';
         });
+        tween.kill(); // GSAP가 더 이상 이 요소를 제어하지 않도록 해제
+        element.classList.add('animated');
       }
     }
   );
