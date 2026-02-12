@@ -6,6 +6,150 @@
 gsap.registerPlugin(ScrollTrigger);
 
 // ========================================
+// Particle Background Effect
+// ========================================
+
+class Particle {
+  constructor(canvas, config) {
+    this.canvas = canvas;
+    this.ctx = canvas.getContext('2d');
+    this.config = config;
+    this.reset();
+  }
+
+  reset() {
+    this.x = Math.random() * this.canvas.width;
+    this.y = Math.random() * this.canvas.height;
+    this.size = Math.random() * (this.config.particle.size.max - this.config.particle.size.min) + this.config.particle.size.min;
+    this.color = this.config.particle.color[Math.floor(Math.random() * this.config.particle.color.length)];
+    this.vx = (Math.random() - 0.5) * this.config.motion.speed;
+    this.vy = (Math.random() - 0.5) * this.config.motion.speed;
+  }
+
+  update(mouse) {
+    if (mouse.x && mouse.y) {
+      const dx = mouse.x - this.x;
+      const dy = mouse.y - this.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 150) {
+        const force = (150 - dist) / 150;
+        const multiplier = this.config.motion.interaction === 'attract' ? 0.03 : -0.03;
+        this.vx += dx * force * multiplier;
+        this.vy += dy * force * multiplier;
+      }
+    }
+
+    this.vx *= 0.99;
+    this.vy *= 0.99;
+
+    this.x += this.vx;
+    this.y += this.vy;
+
+    if (this.x < 0 || this.x > this.canvas.width) this.vx *= -1;
+    if (this.y < 0 || this.y > this.canvas.height) this.vy *= -1;
+
+    this.x = Math.max(0, Math.min(this.canvas.width, this.x));
+    this.y = Math.max(0, Math.min(this.canvas.height, this.y));
+  }
+
+  draw() {
+    this.ctx.beginPath();
+    this.ctx.globalAlpha = this.config.particle.opacity;
+    this.ctx.fillStyle = this.color;
+    this.ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    this.ctx.fill();
+  }
+}
+
+function initParticleBackground() {
+  const canvas = document.getElementById('particleCanvas');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let mouse = { x: null, y: null };
+  let animationId = null;
+
+  // Origin Partners Deep Blue 테마
+  const config = {
+    particle: {
+      count: isMobile() ? 80 : 150,
+      color: ['#3b82f6', '#1e40af', '#60a5fa', '#1e3a8a', '#93c5fd'],
+      size: { min: 1, max: 3 },
+      shape: 'circle',
+      opacity: 0.7
+    },
+    motion: { speed: 0.6, interaction: 'attract' },
+    lines: { enabled: true, distance: 130, color: 'rgba(59, 130, 246, 0.1)' }
+  };
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function initParticles() {
+    particles = [];
+    for (let i = 0; i < config.particle.count; i++) {
+      particles.push(new Particle(canvas, config));
+    }
+  }
+
+  function drawLines() {
+    if (!config.lines.enabled || config.lines.distance <= 0) return;
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < config.lines.distance) {
+          ctx.beginPath();
+          ctx.strokeStyle = config.lines.color;
+          ctx.globalAlpha = (1 - dist / config.lines.distance) * 0.4;
+          ctx.lineWidth = 0.5;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.update(mouse);
+      p.draw();
+    });
+    drawLines();
+    ctx.globalAlpha = 1;
+    animationId = requestAnimationFrame(animate);
+  }
+
+  // Event listeners
+  window.addEventListener('resize', () => {
+    resize();
+    initParticles();
+  });
+
+  // window 전체에서 마우스 이벤트 감지 (콘텐츠 위에서도 작동)
+  document.addEventListener('mousemove', e => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+
+  document.addEventListener('mouseleave', () => {
+    mouse.x = null;
+    mouse.y = null;
+  });
+
+  // Initialize
+  resize();
+  initParticles();
+  animate();
+}
+
+// ========================================
 // Utility Functions
 // ========================================
 
@@ -113,15 +257,19 @@ function initHorizontalScroll() {
   const totalSlides = slides.length;
 
   // 스크롤에 따라 container를 가로로 이동 (pin 사용)
+  // 슬라이드당 스크롤 거리를 줄여서 휠 몇 번으로 페이지 전환
+  const scrollPerSlide = window.innerHeight * 0.5; // 슬라이드당 50vh 스크롤
+  const totalScrollDistance = scrollPerSlide * (totalSlides - 1);
+
   gsap.to(container, {
     x: () => -(container.scrollWidth - window.innerWidth),
     ease: "none",
     scrollTrigger: {
       trigger: wrapper,
       start: "top top",
-      end: () => "+=" + (container.scrollWidth - window.innerWidth),
+      end: () => "+=" + totalScrollDistance,
       pin: true,
-      scrub: 1,
+      scrub: 0.3,
       anticipatePin: 1,
       invalidateOnRefresh: true,
       onUpdate: (self) => {
@@ -231,6 +379,9 @@ function initVerticalAnimations() {
 
 function init() {
   document.fonts.ready.then(() => {
+    // 파티클 배경 초기화 (PC, Mobile 모두)
+    initParticleBackground();
+
     // 모바일: 모든 요소 즉시 표시
     if (isMobile()) {
       showAllElementsOnMobile();
