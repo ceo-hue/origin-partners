@@ -593,6 +593,237 @@ p {
 }
 
 /* ========================================
+   Service Journey Map - Stripe/Linear Style
+   ======================================== */
+
+.journey-map-section {
+  background: transparent;
+  position: relative;
+  min-height: 100vh;
+  padding: 100px 5vw;
+}
+
+.journey-dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* 연결선 - 카드 뒤쪽 레이어 */
+.journey-connector {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  right: 5%;
+  height: 20px;
+  transform: translateY(-50%);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 1s ease-out 0.5s;
+}
+
+.journey-connector.animate {
+  opacity: 1;
+}
+
+.journey-connector svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* 카드 컨테이너 */
+.journey-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* 글래스모피즘 카드 */
+.journey-card {
+  flex: 1;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(255, 255, 255, 0.01) 100%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 28px 24px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.journey-card.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 카드 상단 그라데이션 보더 효과 */
+.journey-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(59, 130, 246, 0.3) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* 카드 호버 효과 */
+.journey-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(59, 130, 246, 0.2);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(59, 130, 246, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.journey-card:hover::before {
+  opacity: 1;
+}
+
+/* 배지 (01, 02...) */
+.card-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--point-light);
+  background: rgba(59, 130, 246, 0.1);
+  padding: 4px 10px;
+  border-radius: 12px;
+  letter-spacing: 0.08em;
+  border: 1px solid rgba(59, 130, 246, 0.15);
+}
+
+/* SVG 아이콘 */
+.card-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 20px;
+  color: var(--point-light);
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+.card-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.journey-card:hover .card-icon {
+  opacity: 1;
+  transform: scale(1.05);
+  color: #60a5fa;
+}
+
+/* 카드 타이틀 */
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+/* 카드 설명 */
+.card-desc {
+  font-size: 0.85rem;
+  color: #888;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+/* 디테일 태그 (호버 시 나타남) */
+.card-detail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.journey-card:hover .card-detail {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.detail-tag {
+  font-size: 0.7rem;
+  color: #999;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Active 카드 (마지막 단계) */
+.journey-card.active {
+  border-color: rgba(59, 130, 246, 0.3);
+  background: linear-gradient(
+    135deg,
+    rgba(30, 64, 175, 0.15) 0%,
+    rgba(59, 130, 246, 0.05) 100%
+  );
+}
+
+.journey-card.active::before {
+  opacity: 1;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--point-light) 50%,
+    transparent 100%
+  );
+}
+
+.journey-card.active .card-badge {
+  background: var(--point-color);
+  border-color: var(--point-light);
+  color: #fff;
+}
+
+.journey-card.active .card-icon {
+  color: #60a5fa;
+  opacity: 1;
+}
+
+/* 카드 하단 글로우 효과 */
+.journey-card.active::after {
+  content: '';
+  position: absolute;
+  bottom: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(59, 130, 246, 0.15) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* ========================================
    Team Stats Section - 그리드 패턴
    ======================================== */
 
@@ -904,6 +1135,45 @@ p {
     opacity: 1 !important;
     transform: none !important;
     padding: 30px 24px;
+  }
+
+  /* ===== Service Journey Map - 모바일 세로 ===== */
+  .journey-map-section {
+    padding: 60px 24px;
+  }
+
+  .journey-dashboard {
+    padding: 0;
+  }
+
+  .journey-connector {
+    display: none;
+  }
+
+  .journey-cards {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .journey-card {
+    opacity: 1 !important;
+    transform: none !important;
+    padding: 24px 20px;
+  }
+
+  .journey-card:hover {
+    transform: none;
+  }
+
+  .card-detail {
+    opacity: 1;
+    transform: none;
+  }
+
+  .card-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 16px;
   }
 
   /* ===== 포트폴리오/클라이언트 - 세로 1열 ===== */

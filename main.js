@@ -28,23 +28,41 @@ class Particle {
 
   update(mouse) {
     if (mouse.x && mouse.y) {
-      const dx = mouse.x - this.x;
-      const dy = mouse.y - this.y;
+      const dx = this.x - mouse.x;
+      const dy = this.y - mouse.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 150) {
-        const force = (150 - dist) / 150;
-        const multiplier = this.config.motion.interaction === 'attract' ? 0.03 : -0.03;
-        this.vx += dx * force * multiplier;
-        this.vy += dy * force * multiplier;
+
+      if (dist < 250 && dist > 15) {
+        // 원자 궤도 회전 운동 (강화됨)
+        const angle = Math.atan2(dy, dx);
+        const orbitSpeed = 0.08 * (1 - dist / 250); // 회전 속도 3배 증가
+
+        // 회전력 (접선 방향) - 더 강하게
+        const tangentX = -Math.sin(angle) * orbitSpeed * 18;
+        const tangentY = Math.cos(angle) * orbitSpeed * 18;
+
+        // 구심력 (중심으로 당김) - 더 강하게
+        const pullStrength = 0.025;
+        const pullX = -dx * pullStrength * (1 - dist / 250);
+        const pullY = -dy * pullStrength * (1 - dist / 250);
+
+        this.vx += tangentX + pullX;
+        this.vy += tangentY + pullY;
+      } else if (dist <= 15) {
+        // 너무 가까우면 밀어냄
+        const pushForce = 0.8;
+        this.vx += (dx / dist) * pushForce;
+        this.vy += (dy / dist) * pushForce;
       }
     }
 
-    this.vx *= 0.99;
-    this.vy *= 0.99;
+    this.vx *= 0.97; // 마찰력
+    this.vy *= 0.97;
 
     this.x += this.vx;
     this.y += this.vy;
 
+    // 화면 경계 처리
     if (this.x < 0 || this.x > this.canvas.width) this.vx *= -1;
     if (this.y < 0 || this.y > this.canvas.height) this.vy *= -1;
 
@@ -53,6 +71,7 @@ class Particle {
   }
 
   draw() {
+    // 심플한 파티클 (글로우 효과 없음)
     this.ctx.beginPath();
     this.ctx.globalAlpha = this.config.particle.opacity;
     this.ctx.fillStyle = this.color;
@@ -117,6 +136,7 @@ function initParticleBackground() {
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     particles.forEach(p => {
       p.update(mouse);
       p.draw();
@@ -219,6 +239,18 @@ function showAllElementsOnMobile() {
     el.style.opacity = '1';
     el.style.transform = 'none';
   });
+
+  // Service Journey Map 카드 표시 (Stripe/Linear 스타일)
+  document.querySelectorAll('.journey-card').forEach(card => {
+    card.style.opacity = '1';
+    card.style.transform = 'none';
+  });
+
+  // 연결선 표시
+  const journeyConnector = document.querySelector('.journey-connector');
+  if (journeyConnector) {
+    journeyConnector.classList.add('animate');
+  }
 }
 
 // ========================================
@@ -323,17 +355,33 @@ function initVerticalAnimations() {
     });
   });
 
-  const portfolioItems = document.querySelectorAll('.portfolio-item');
-  portfolioItems.forEach((item, index) => {
+  // Service Journey Map 애니메이션 (Stripe/Linear 스타일)
+  const journeyCards = document.querySelectorAll('.journey-card');
+  const journeyConnector = document.querySelector('.journey-connector');
+
+  if (journeyCards.length > 0) {
     ScrollTrigger.create({
-      trigger: item,
-      start: "top 85%",
+      trigger: '.journey-map-section',
+      start: "top 70%",
       onEnter: () => {
-        gsap.to(item, { opacity: 1, y: 0, duration: 0.5, delay: index * 0.1, ease: "power2.out" });
+        // 카드 순차 애니메이션
+        journeyCards.forEach((card, index) => {
+          gsap.to(card, {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            delay: index * 0.12,
+            ease: "power3.out"
+          });
+        });
+        // 연결선 페이드인
+        if (journeyConnector) {
+          journeyConnector.classList.add('animate');
+        }
       },
       once: true
     });
-  });
+  }
 
   const statItems = document.querySelectorAll('.stat-item');
   statItems.forEach((item, index) => {
