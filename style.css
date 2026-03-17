@@ -139,9 +139,44 @@ p {
    Slide Backgrounds - 이미지 + 오버레이
    ======================================== */
 
-/* Hero: 파티클 배경 (이미지 없이 다크 배경만) */
+/* Hero: 에베레스트 베이스캠프 4K 배경 */
 .slide-hero {
-  background: transparent;
+  background:
+    url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=2560&q=90') center/cover no-repeat;
+  justify-content: flex-start;
+  padding-left: 7vw;
+}
+
+/* Hero 글래스모피즘 카드 */
+.hero-glass-card {
+  max-width: 620px;
+  background: rgba(5, 12, 28, 0.60);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 20px;
+  padding: 52px 56px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 상단 하이라이트 라인 */
+.hero-glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
+}
+
+/* 우측 하단 글로우 */
+.hero-glass-card::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; right: -60px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(0,212,255,0.12) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 /* Problem (01): 협업/팀워크 이미지 */
@@ -230,11 +265,11 @@ p {
   align-items: center;
   gap: 7px;
   padding: 7px 14px;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-mid);
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 7px;
   font-size: 0.82rem;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .data-num {
@@ -287,7 +322,7 @@ p {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: #666;
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .scroll-line {
