@@ -151,174 +151,154 @@ p {
   justify-content: center;
 }
 
-/* ── 대형 글래스 프레임 ── */
+/* ── 대형 글래스 프레임 (단일 선언) ── */
 .hf {
   width: 100%;
   height: 100%;
   background: transparent;
   border-radius: 24px;
-  /* 베젤: 바깥쪽 그림자 + 안쪽 하이라이트로 유리 테두리 질감 */
   box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.22),          /* 얇은 외곽 테두리 */
-    inset 0 1px 0 rgba(255, 255, 255, 0.55),       /* 상단 하이라이트 */
-    inset 0 -1px 0 rgba(0, 0, 0, 0.18),            /* 하단 그림자 */
-    inset 1px 0 0 rgba(255, 255, 255, 0.20),        /* 좌측 하이라이트 */
-    inset -1px 0 0 rgba(0, 0, 0, 0.10),             /* 우측 그림자 */
-    0 24px 80px rgba(0, 0, 0, 0.30);               /* 외부 드롭 쉐도우 */
+    0 0 0 1px rgba(255,255,255,0.22),
+    inset 0 1.5px 0 rgba(255,255,255,0.60),
+    inset 0 -1px 0 rgba(0,0,0,0.18),
+    inset 1px 0 0 rgba(255,255,255,0.18),
+    inset -1px 0 0 rgba(0,0,0,0.10),
+    0 24px 80px rgba(0,0,0,0.30);
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 48px 56px 40px;
+  flex-direction: row;         /* 좌우 분할 */
+  align-items: center;
+  padding: 52px 60px 52px 60px;
   color: #ffffff;
   position: relative;
   overflow: hidden;
 }
 
-/* 상단 베젤 유리 반사 라인 */
+/* 상단 베젤 반사 */
 .hf::before {
   content: '';
   position: absolute;
-  top: 0; left: 5%; right: 5%;
+  top: 0; left: 6%; right: 6%;
   height: 1px;
   background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(255,255,255,0.60) 30%,
-    rgba(255,255,255,0.80) 50%,
-    rgba(255,255,255,0.60) 70%,
-    transparent 100%);
-  border-radius: 1px;
+    transparent, rgba(255,255,255,0.65) 40%,
+    rgba(255,255,255,0.85) 50%,
+    rgba(255,255,255,0.65) 60%, transparent);
   pointer-events: none;
 }
 
-/* 좌측 베젤 반사 */
-.hf::after {
-  content: '';
-  position: absolute;
-  top: 5%; bottom: 5%; left: 0;
-  width: 1px;
-  background: linear-gradient(180deg,
-    transparent 0%,
-    rgba(255,255,255,0.40) 30%,
-    rgba(255,255,255,0.55) 50%,
-    rgba(255,255,255,0.30) 70%,
-    transparent 100%);
-  pointer-events: none;
-}
-
-/* ── 좌우 분할 레이아웃 ── */
-.hf {
-  flex-direction: row !important;
-  align-items: center;
-  gap: 0;
-  padding: 52px 56px !important;
-}
-
-/* 좌측 60% — 브랜드·메시지 */
+/* ── 좌측 — 브랜드·메시지 ── */
 .hf-left {
-  flex: 0 0 58%;
-  padding-right: 5vw;
+  flex: 0 0 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 6vw;
 }
 
-/* 우측 40% — 스탯 원형 + 출처 */
+/* ── 우측 — 원형 스탯 ── */
 .hf-right {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  justify-content: center;
+  gap: 22px;
 }
 
 /* 원형 카드 행 */
 .hf-circles {
   display: flex;
-  gap: 18px;
+  gap: 16px;
   align-items: center;
   justify-content: center;
 }
 
-/* 브랜드 칩 */
+/* ── 브랜드 칩 ── */
 .hf-chip {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.63rem;
+  font-size: 0.60rem;
   font-weight: 700;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.30em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.80);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  background: rgba(255, 255, 255, 0.09);
-  padding: 6px 16px;
+  color: rgba(255,255,255,0.72);
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.08);
+  padding: 5px 14px;
   border-radius: 20px;
-  margin-bottom: 28px;
+  margin-bottom: 26px;
 }
 
 .hf-dot {
   width: 6px; height: 6px;
   background: #00D4FF;
   border-radius: 50%;
-  box-shadow: 0 0 6px #00D4FF;
+  box-shadow: 0 0 8px rgba(0,212,255,0.8);
   flex-shrink: 0;
 }
 
-/* ── h1 타이틀 ── */
+/* ── h1 타이틀 (3단 구조) ── */
 .hf-left h1 {
   display: flex;
   flex-direction: column;
-  margin-bottom: 22px;
+  gap: 0;
+  margin-bottom: 20px;
 }
 
-/* 상단 두 줄 — 가볍게 */
+/* 1단: 한 줄 서술 — 가볍고 작게 */
 .hf-h1-lead {
-  font-size: clamp(1.4rem, 2.4vw, 2.4rem);
-  font-weight: 400;
-  line-height: 1.35;
-  letter-spacing: -0.025em;
-  color: rgba(255,255,255,0.82);
-  text-shadow: 0 2px 16px rgba(0,0,0,0.30);
+  font-size: clamp(1.05rem, 1.7vw, 1.65rem);
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,0.75);
+  white-space: nowrap;         /* 한 줄 강제 */
+  text-shadow: 0 1px 12px rgba(0,0,0,0.35);
+  margin-bottom: 0.3em;
 }
 
-/* 줄 간격 */
-.hf-h1-gap {
-  display: block;
-  height: 0.55em;
-}
+/* 간격 */
+.hf-h1-gap { height: 0.4em; display: block; }
 
-/* "전문가 파트너 그룹," — 굵고 크게 */
+/* 2단: 전문가 파트너 그룹, — 크고 bold */
 .hf-h1-main {
-  font-size: clamp(1.9rem, 3.2vw, 3.4rem);
+  font-size: clamp(1.8rem, 3.0vw, 3.6rem);
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.10;
   letter-spacing: -0.04em;
   color: #ffffff;
-  text-shadow: 0 2px 24px rgba(0,0,0,0.35);
+  text-shadow: 0 2px 28px rgba(0,0,0,0.40);
 }
 
-/* "ORIGIN PARTNERS" — 영문 브랜드 */
+/* 3단: ORIGIN PARTNERS — 영문 강조 */
 .hf-h1-brand {
-  font-size: clamp(1.1rem, 1.8vw, 2rem);
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-size: clamp(1.3rem, 2.2vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #62EEFF;
-  margin-top: 6px;
-  text-shadow: 0 0 20px rgba(0,212,255,0.40);
+  color: #00D4FF;
+  margin-top: 0.18em;
+  text-shadow:
+    0 0 30px rgba(0,212,255,0.55),
+    0 0 60px rgba(0,212,255,0.25);
 }
 
+/* 서브카피 */
 .hf-sub {
-  font-size: clamp(0.82rem, 1.2vw, 0.95rem);
-  color: rgba(255, 255, 255, 0.62);
-  line-height: 1.8;
-  margin-bottom: 30px;
+  font-size: clamp(0.80rem, 1.1vw, 0.92rem);
+  color: rgba(255,255,255,0.58);
+  line-height: 1.85;
+  margin-bottom: 32px;
 }
 
-/* 개별 스탯 카드 — 원형 */
+/* ── 원형 스탯 카드 ── */
 .hf-stat-card {
-  width: 148px;
-  height: 148px;
+  width: 140px;
+  height: 140px;
   flex-shrink: 0;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(255,255,255,0.14);
   backdrop-filter: blur(20px) saturate(150%);
   -webkit-backdrop-filter: blur(20px) saturate(150%);
   display: flex;
@@ -326,65 +306,57 @@ p {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0 16px;
+  padding: 0 12px;
   box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.50),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.14),
-    0 8px 28px rgba(0, 0, 0, 0.22);
+    0 0 0 1px rgba(255,255,255,0.28),
+    inset 0 1.5px 0 rgba(255,255,255,0.55),
+    inset 0 -1px 0 rgba(0,0,0,0.14),
+    0 8px 28px rgba(0,0,0,0.22);
 }
 
 .hfs-num {
-  font-size: 2rem;
+  font-size: 1.9rem;
   font-weight: 900;
   color: #ffffff;
   line-height: 1;
   letter-spacing: -0.04em;
-  margin-bottom: 7px;
+  margin-bottom: 6px;
 }
 
 .hfs-num span {
-  font-size: 58%;
+  font-size: 56%;
   color: #62EEFF;
   margin-left: 1px;
 }
 
 .hfs-label {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  color: rgba(255,255,255,0.90);
-  line-height: 1.3;
-  margin-bottom: 2px;
+  color: rgba(255,255,255,0.88);
+  line-height: 1.35;
 }
 
-.hfs-desc {
-  font-size: 0.62rem;
-  color: rgba(255,255,255,0.48);
-  line-height: 1.3;
-}
+.hfs-desc  { display: none; }
+.hfs-bar   { display: none; }
 
-/* 원형에서 바 숨김 */
-.hfs-bar { display: none; }
-
-/* 출처 텍스트 — 카드 없이 */
+/* ── 출처 ── */
 .hf-source {
   display: flex;
   align-items: center;
-  gap: 8px;
-  text-align: center;
+  gap: 7px;
 }
 
 .hfs-src-label {
-  font-size: 0.58rem;
+  font-size: 0.56rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.20em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.28);
+  color: rgba(255,255,255,0.25);
 }
 
 .hfs-src-text {
-  font-size: 0.70rem;
-  color: rgba(255,255,255,0.48);
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.45);
 }
 
 /* Problem (01): 협업/팀워크 이미지 */
@@ -1503,54 +1475,37 @@ p {
     background-attachment: scroll !important; /* 모바일에서 fixed 비활성화 */
   }
 
-  /* 모바일: 히어로 사진 배경 유지 */
+  /* 모바일: 히어로 */
   .slide-hero {
     background:
       url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&q=80') center/cover no-repeat !important;
-    padding: 2vh 3vw !important;
+    padding: 2.5vh 4vw !important;
   }
 
   .hf {
     flex-direction: column !important;
-    padding: 28px 22px 26px !important;
-    border-radius: 18px !important;
-    gap: 28px !important;
+    padding: 30px 24px 26px !important;
+    gap: 28px;
   }
 
   .hf-left {
     flex: none !important;
     padding-right: 0 !important;
-    width: 100%;
   }
 
-  .hf-right {
-    width: 100%;
+  .hf-right { width: 100%; }
+
+  .hf-h1-lead {
+    font-size: clamp(0.88rem, 3.5vw, 1.2rem) !important;
+    white-space: normal !important;
   }
+  .hf-h1-main  { font-size: clamp(1.4rem, 6vw, 2.2rem)   !important; }
+  .hf-h1-brand { font-size: clamp(1.0rem, 4.5vw, 1.6rem) !important; }
 
-  .hf-h1-lead { font-size: clamp(1.1rem, 4vw, 1.5rem) !important; }
-  .hf-h1-main { font-size: clamp(1.4rem, 5.5vw, 2rem) !important; }
-  .hf-h1-brand { font-size: clamp(0.85rem, 3vw, 1.2rem) !important; }
-
-  .hf-sub {
-    font-size: 0.80rem !important;
-    margin-bottom: 20px !important;
-  }
-
-  .hf-circles {
-    gap: 12px;
-  }
-
-  .hf-stat-card {
-    width: 100px;
-    height: 100px;
-  }
-
-  .hfs-num { font-size: 1.5rem !important; }
-  .hfs-label { font-size: 0.62rem !important; }
-
-  .hf-source {
-    justify-content: center;
-  }
+  .hf-circles { gap: 10px; }
+  .hf-stat-card { width: 96px; height: 96px; }
+  .hfs-num { font-size: 1.4rem !important; }
+  .hf-source { justify-content: center; }
 
   .slide-vision {
     background:
