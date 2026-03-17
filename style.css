@@ -140,82 +140,120 @@ p {
    ======================================== */
 
 /* ========================================
-   Hero — 에베레스트 배경 + 다중 글래스 카드
+   Hero — 에베레스트 배경 + 대형 글래스 프레임
    ======================================== */
 
 .slide-hero {
   background:
     url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=2560&q=90') center/cover no-repeat;
-  padding: 0;
+  padding: 3vh 3vw;
   align-items: stretch;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
-/* ── 공통 글래스 카드 베이스 ── */
-.hc {
-  position: absolute;
-  background: rgba(255, 255, 255, 0.13);
-  backdrop-filter: blur(36px) saturate(160%);
-  -webkit-backdrop-filter: blur(36px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.32);
-  border-radius: 20px;
+/* ── 대형 글래스 프레임 ── */
+.hf {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(28px) saturate(140%);
+  -webkit-backdrop-filter: blur(28px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 24px;
   box-shadow:
-    0 8px 40px rgba(0, 0, 0, 0.22),
+    0 16px 64px rgba(0, 0, 0, 0.28),
     inset 0 1px 0 rgba(255, 255, 255, 0.40);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 48px 56px 40px;
   color: #ffffff;
+  position: relative;
+  overflow: hidden;
 }
 
-/* ── 메인 브랜드 카드 ── */
-.hc-main {
-  left: 6vw;
-  bottom: 8vh;
-  max-width: 500px;
-  padding: 40px 44px 44px;
+/* 프레임 안쪽 좌상단 글로우 */
+.hf::before {
+  content: '';
+  position: absolute;
+  top: -120px; left: -120px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(0,212,255,0.14) 0%, transparent 65%);
+  pointer-events: none;
 }
 
-.hc-chip {
-  display: inline-block;
-  font-size: 0.66rem;
+/* ── 상단 영역 ── */
+.hf-top {
+  max-width: 600px;
+}
+
+/* 브랜드 칩 */
+.hf-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.90);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.12);
-  padding: 5px 14px;
+  color: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.10);
+  padding: 6px 16px;
   border-radius: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
-.hc-main h1 {
-  font-size: clamp(1.55rem, 2.8vw, 2.8rem);
+.hf-dot {
+  width: 6px; height: 6px;
+  background: #00D4FF;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #00D4FF;
+}
+
+/* 킥 메시지 */
+.hf h1 {
+  font-size: clamp(1.7rem, 3vw, 3.2rem);
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.22;
   letter-spacing: -0.03em;
   color: #ffffff;
-  margin-bottom: 16px;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.30);
+  margin-bottom: 18px;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.35);
 }
 
-.hc-main .point-color {
+.hf .point-color {
   color: #62EEFF;
 }
 
-.hc-sub {
-  font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.72);
-  line-height: 1.7;
-  margin-bottom: 28px;
+.hf-sub {
+  font-size: clamp(0.85rem, 1.3vw, 1rem);
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.75;
+  margin-bottom: 32px;
 }
 
-/* ── 스탯 카드 ── */
-.hc-stat {
-  width: 200px;
-  padding: 22px 24px 20px;
+/* ── 하단 데이터 카드 행 ── */
+.hf-bottom {
+  display: flex;
+  gap: 14px;
+  align-items: flex-end;
 }
 
-.hc-stat-num {
-  font-size: 2.4rem;
+/* 개별 스탯 카드 */
+.hf-stat-card {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 16px;
+  padding: 20px 22px 18px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+}
+
+.hfs-num {
+  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
   font-weight: 900;
   color: #ffffff;
   line-height: 1;
@@ -223,55 +261,61 @@ p {
   margin-bottom: 6px;
 }
 
-.hc-stat-num span {
-  font-size: 1.4rem;
+.hfs-num span {
+  font-size: 60%;
   color: #62EEFF;
+  margin-left: 1px;
 }
 
-.hc-stat-label {
-  font-size: 0.82rem;
+.hfs-label {
+  font-size: 0.80rem;
   font-weight: 700;
-  color: rgba(255,255,255,0.95);
-  margin-bottom: 3px;
+  color: rgba(255,255,255,0.92);
+  margin-bottom: 4px;
 }
 
-.hc-stat-desc {
-  font-size: 0.72rem;
-  color: rgba(255,255,255,0.55);
-  margin-bottom: 12px;
+.hfs-desc {
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.50);
+  margin-bottom: 14px;
 }
 
-.hc-stat-bar {
+.hfs-bar {
   height: 3px;
-  background: rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.13);
   border-radius: 2px;
   overflow: hidden;
 }
 
-.hc-stat-fill {
+.hfs-fill {
   height: 100%;
-  background: linear-gradient(90deg, #00D4FF, #62EEFF);
+  background: linear-gradient(90deg, #00AADD, #62EEFF);
   border-radius: 2px;
 }
 
-/* ── 소스 뱃지 ── */
-.hc-badge {
-  position: absolute;
-  bottom: 3.5vh;
-  right: 6vw;
-  padding: 7px 16px;
-  font-size: 0.68rem;
-  color: rgba(255,255,255,0.55);
-  border-radius: 20px;
-  letter-spacing: 0.05em;
+/* 소스 카드 */
+.hf-source {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  padding: 16px 20px;
+  min-width: 120px;
+  text-align: center;
 }
 
-.hc-badge span {
-  color: rgba(255,255,255,0.30);
-  margin-right: 4px;
+.hfs-src-label {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: 0.60rem;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 5px;
+}
+
+.hfs-src-text {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.60);
+  line-height: 1.4;
 }
 
 /* Problem (01): 협업/팀워크 이미지 */
@@ -1390,35 +1434,40 @@ p {
     background-attachment: scroll !important; /* 모바일에서 fixed 비활성화 */
   }
 
-  /* 모바일: 히어로 사진 배경 유지, 카드 재배치 */
+  /* 모바일: 히어로 사진 배경 유지 */
   .slide-hero {
     background:
-      linear-gradient(180deg, rgba(0,0,0,0.20) 0%, rgba(0,0,0,0.45) 100%),
       url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&q=80') center/cover no-repeat !important;
-    align-items: flex-end !important;
-    padding-bottom: 5vh !important;
+    padding: 2vh 3vw !important;
   }
 
-  /* 모바일: absolute → 스택 레이아웃 */
-  .hc {
-    position: relative !important;
-    top: auto !important; bottom: auto !important;
-    left: auto !important; right: auto !important;
-    width: 100% !important;
-    margin-bottom: 12px;
+  .hf {
+    padding: 28px 22px 22px !important;
+    border-radius: 18px !important;
   }
 
-  .hc-stat {
-    display: none; /* 모바일에선 스탯 카드 숨김 */
+  .hf h1 {
+    font-size: clamp(1.4rem, 5vw, 2rem) !important;
+    margin-bottom: 12px !important;
   }
 
-  .hc-badge {
+  .hf-sub {
+    font-size: 0.82rem !important;
+    margin-bottom: 20px !important;
+  }
+
+  .hf-bottom {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .hf-stat-card {
+    flex: 1 1 calc(50% - 10px);
+    min-width: 130px;
+  }
+
+  .hf-source {
     display: none;
-  }
-
-  .hc-main {
-    max-width: 100% !important;
-    padding: 28px 24px !important;
   }
 
   .slide-vision {
