@@ -483,40 +483,14 @@ p {
   flex-shrink: 0;
 }
 
-/* h2 타이포 — h1과 동일한 3단 위계 */
+/* h2 — 전역 스타일 그대로 사용, 텍스트 가독성만 보강 */
 .sf-left h2 {
-  display: flex;
-  flex-direction: column;
   margin-bottom: 20px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.50);
 }
 
-.sf-h2-lead {
-  font-size: clamp(1rem, 1.5vw, 1.4rem);
-  font-weight: 300;
-  line-height: 1.5;
-  letter-spacing: -0.01em;
-  color: rgba(255,255,255,0.72);
-  text-shadow: 0 1px 12px rgba(0,0,0,0.35);
-  margin-bottom: 0.3em;
-}
-
-.sf-h2-gap { height: 0.35em; display: block; }
-
-.sf-h2-main {
-  font-size: clamp(1.7rem, 2.8vw, 3.2rem);
-  font-weight: 800;
-  line-height: 1.12;
-  letter-spacing: -0.04em;
+.sf-left h2 .line {
   color: #ffffff;
-  text-shadow: 0 2px 28px rgba(0,0,0,0.40);
-}
-
-.sf-desc {
-  font-size: clamp(0.92rem, 1.2vw, 1.05rem);
-  color: rgba(255,255,255,0.65);
-  line-height: 1.80;
-  font-weight: 300;
-  text-shadow: 0 1px 8px rgba(0,0,0,0.35);
 }
 
 /* ── 01 Problem: 대형 원형 스탯 ── */
