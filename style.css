@@ -370,31 +370,31 @@ p {
   color: rgba(255,255,255,0.45);
 }
 
-/* Problem (01) — 오버레이 50%로 줄여 사진 살리기 */
+/* Problem (01) — 안개 속 인물: 방향을 잃은 불확실성 */
 .slide-vision {
   background:
-    linear-gradient(160deg, rgba(8,15,26,0.55) 0%, rgba(13,24,41,0.50) 100%),
-    url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80') center/cover no-repeat;
+    linear-gradient(160deg, rgba(8,15,26,0.52) 0%, rgba(13,24,41,0.45) 100%),
+    url('https://images.unsplash.com/photo-1476610182048-b716b8518aae?w=1920&q=80') center/cover no-repeat;
   padding: 3vh 3vw;
   align-items: stretch;
   justify-content: center;
 }
 
-/* Solution (02) */
+/* Solution (02) — 구름 뚫고 나온 산봉우리: 돌파구 */
 .slide-philosophy {
   background:
-    linear-gradient(160deg, rgba(8,15,26,0.55) 0%, rgba(19,32,53,0.50) 100%),
-    url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1920&q=80') center/cover no-repeat;
+    linear-gradient(160deg, rgba(8,15,26,0.50) 0%, rgba(19,32,53,0.42) 100%),
+    url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80') center/cover no-repeat;
   padding: 3vh 3vw;
   align-items: stretch;
   justify-content: center;
 }
 
-/* Process (03) */
+/* Process (03) — 산악 항공뷰: 단계적 여정 */
 .slide-difference {
   background:
-    linear-gradient(160deg, rgba(8,15,26,0.55) 0%, rgba(15,24,45,0.50) 100%),
-    url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&q=80') center/cover no-repeat;
+    linear-gradient(160deg, rgba(8,15,26,0.52) 0%, rgba(15,24,45,0.45) 100%),
+    url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1920&q=80') center/cover no-repeat;
   padding: 3vh 3vw;
   align-items: stretch;
   justify-content: center;
