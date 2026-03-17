@@ -139,44 +139,139 @@ p {
    Slide Backgrounds - 이미지 + 오버레이
    ======================================== */
 
-/* Hero: 에베레스트 베이스캠프 4K 배경 */
+/* ========================================
+   Hero — 에베레스트 배경 + 다중 글래스 카드
+   ======================================== */
+
 .slide-hero {
   background:
     url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=2560&q=90') center/cover no-repeat;
+  padding: 0;
+  align-items: stretch;
   justify-content: flex-start;
-  padding-left: 7vw;
 }
 
-/* Hero 글래스모피즘 카드 */
-.hero-glass-card {
-  max-width: 620px;
-  background: rgba(5, 12, 28, 0.60);
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+/* ── 공통 글래스 카드 베이스 ── */
+.hc {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(36px) saturate(160%);
+  -webkit-backdrop-filter: blur(36px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.32);
   border-radius: 20px;
-  padding: 52px 56px 48px;
-  position: relative;
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.40);
+  color: #ffffff;
+}
+
+/* ── 메인 브랜드 카드 ── */
+.hc-main {
+  left: 6vw;
+  bottom: 8vh;
+  max-width: 500px;
+  padding: 40px 44px 44px;
+}
+
+.hc-chip {
+  display: inline-block;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.90);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.hc-main h1 {
+  font-size: clamp(1.55rem, 2.8vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.30);
+}
+
+.hc-main .point-color {
+  color: #62EEFF;
+}
+
+.hc-sub {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+/* ── 스탯 카드 ── */
+.hc-stat {
+  width: 200px;
+  padding: 22px 24px 20px;
+}
+
+.hc-stat-num {
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: 6px;
+}
+
+.hc-stat-num span {
+  font-size: 1.4rem;
+  color: #62EEFF;
+}
+
+.hc-stat-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.95);
+  margin-bottom: 3px;
+}
+
+.hc-stat-desc {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 12px;
+}
+
+.hc-stat-bar {
+  height: 3px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 2px;
   overflow: hidden;
 }
 
-/* 상단 하이라이트 라인 */
-.hero-glass-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
+.hc-stat-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00D4FF, #62EEFF);
+  border-radius: 2px;
 }
 
-/* 우측 하단 글로우 */
-.hero-glass-card::after {
-  content: '';
+/* ── 소스 뱃지 ── */
+.hc-badge {
   position: absolute;
-  bottom: -60px; right: -60px;
-  width: 200px; height: 200px;
-  background: radial-gradient(circle, rgba(0,212,255,0.12) 0%, transparent 70%);
-  pointer-events: none;
+  bottom: 3.5vh;
+  right: 6vw;
+  padding: 7px 16px;
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.55);
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+}
+
+.hc-badge span {
+  color: rgba(255,255,255,0.30);
+  margin-right: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.60rem;
 }
 
 /* Problem (01): 협업/팀워크 이미지 */
@@ -213,76 +308,7 @@ p {
     url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80') center/cover no-repeat;
 }
 
-.slide-hero h1 {
-  margin-bottom: 1.5rem;
-}
-
-/* Hero Chip */
-.hero-chip {
-  margin-bottom: 1.8rem;
-}
-
-.hero-chip .line {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--accent);
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  padding: 6px 16px;
-  border-radius: 20px;
-  background: var(--accent-dim);
-}
-
-.slide-hero h1 {
-  margin-bottom: 1.5rem;
-}
-
-.slide-hero .hero-slogan {
-  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
-}
-
-.slide-hero .hero-slogan .line {
-  color: var(--text-secondary);
-}
-
-/* Hero Data Chips */
-.hero-data-chips {
-  margin-bottom: 2.5rem;
-}
-
-.hero-data-chips .line {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.data-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 7px 14px;
-  background: rgba(255, 255, 255, 0.09);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 7px;
-  font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.75);
-}
-
-.data-num {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--accent);
-  font-variant-numeric: tabular-nums;
-}
-
-/* Hero CTA */
-.hero-cta {
-  margin-top: 0;
-}
+/* Hero CTA (cta-primary 공통 사용) */
 
 .cta-primary {
   display: inline-flex;
@@ -1364,9 +1390,35 @@ p {
     background-attachment: scroll !important; /* 모바일에서 fixed 비활성화 */
   }
 
-  /* 모바일용 작은 이미지로 교체 */
+  /* 모바일: 히어로 사진 배경 유지, 카드 재배치 */
   .slide-hero {
-    background: transparent !important;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.20) 0%, rgba(0,0,0,0.45) 100%),
+      url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&q=80') center/cover no-repeat !important;
+    align-items: flex-end !important;
+    padding-bottom: 5vh !important;
+  }
+
+  /* 모바일: absolute → 스택 레이아웃 */
+  .hc {
+    position: relative !important;
+    top: auto !important; bottom: auto !important;
+    left: auto !important; right: auto !important;
+    width: 100% !important;
+    margin-bottom: 12px;
+  }
+
+  .hc-stat {
+    display: none; /* 모바일에선 스탯 카드 숨김 */
+  }
+
+  .hc-badge {
+    display: none;
+  }
+
+  .hc-main {
+    max-width: 100% !important;
+    padding: 28px 24px !important;
   }
 
   .slide-vision {
