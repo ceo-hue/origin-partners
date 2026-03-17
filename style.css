@@ -370,25 +370,292 @@ p {
   color: rgba(255,255,255,0.45);
 }
 
-/* Problem (01): 협업/팀워크 이미지 */
+/* Problem (01) — 오버레이 50%로 줄여 사진 살리기 */
 .slide-vision {
   background:
-    linear-gradient(180deg, rgba(8,15,26,0.90) 0%, rgba(13,24,41,0.93) 100%),
+    linear-gradient(160deg, rgba(8,15,26,0.55) 0%, rgba(13,24,41,0.50) 100%),
     url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80') center/cover no-repeat;
+  padding: 3vh 3vw;
+  align-items: stretch;
+  justify-content: center;
 }
 
-/* Solution (02): 빛나는 아이디어 */
+/* Solution (02) */
 .slide-philosophy {
   background:
-    linear-gradient(135deg, rgba(8,15,26,0.92) 0%, rgba(19,32,53,0.90) 100%),
+    linear-gradient(160deg, rgba(8,15,26,0.55) 0%, rgba(19,32,53,0.50) 100%),
     url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1920&q=80') center/cover no-repeat;
+  padding: 3vh 3vw;
+  align-items: stretch;
+  justify-content: center;
 }
 
-/* Process (03): 네트워크/연결 */
+/* Process (03) */
 .slide-difference {
   background:
-    linear-gradient(180deg, rgba(8,15,26,0.92) 0%, rgba(15,24,45,0.90) 100%),
+    linear-gradient(160deg, rgba(8,15,26,0.55) 0%, rgba(15,24,45,0.50) 100%),
     url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&q=80') center/cover no-repeat;
+  padding: 3vh 3vw;
+  align-items: stretch;
+  justify-content: center;
+}
+
+/* ========================================
+   슬라이드 프레임 시스템 (.sf)
+   Hero .hf 와 동일한 디자인 언어
+   ======================================== */
+
+.sf {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border-radius: 24px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.22),
+    inset 0 1.5px 0 rgba(255,255,255,0.60),
+    inset 0 -1px 0 rgba(0,0,0,0.18),
+    inset 1px 0 0 rgba(255,255,255,0.18),
+    inset -1px 0 0 rgba(0,0,0,0.10),
+    0 24px 80px rgba(0,0,0,0.28);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 52px 7vw 52px 9vw;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.sf::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 6%; right: 6%;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent, rgba(255,255,255,0.65) 40%,
+    rgba(255,255,255,0.85) 50%,
+    rgba(255,255,255,0.65) 60%, transparent);
+  pointer-events: none;
+}
+
+/* 좌측 */
+.sf-left {
+  flex: 0 0 52%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-right: 6vw;
+}
+
+/* 우측 */
+.sf-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* 칩 — hf-chip과 동일 */
+.sf-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.60rem;
+  font-weight: 700;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.72);
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.08);
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 26px;
+}
+
+.sf-dot {
+  width: 6px; height: 6px;
+  background: #00D4FF;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0,212,255,0.8);
+  flex-shrink: 0;
+}
+
+/* h2 타이포 — h1과 동일한 3단 위계 */
+.sf-left h2 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.sf-h2-lead {
+  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,0.72);
+  text-shadow: 0 1px 12px rgba(0,0,0,0.35);
+  margin-bottom: 0.3em;
+}
+
+.sf-h2-gap { height: 0.35em; display: block; }
+
+.sf-h2-main {
+  font-size: clamp(1.7rem, 2.8vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  text-shadow: 0 2px 28px rgba(0,0,0,0.40);
+}
+
+.sf-desc {
+  font-size: clamp(0.92rem, 1.2vw, 1.05rem);
+  color: rgba(255,255,255,0.65);
+  line-height: 1.80;
+  font-weight: 300;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.35);
+}
+
+/* ── 01 Problem: 대형 원형 스탯 ── */
+.sf-big-stat {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.13);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.28),
+    inset 0 1.5px 0 rgba(255,255,255,0.55),
+    inset 0 -1px 0 rgba(0,0,0,0.14),
+    0 12px 40px rgba(0,0,0,0.28);
+}
+
+.sfbs-num {
+  font-size: clamp(2.8rem, 4vw, 4rem);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  margin-bottom: 8px;
+}
+
+.sfbs-num span { font-size: 55%; color: #62EEFF; margin-left: 2px; }
+
+.sfbs-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.92);
+  margin-bottom: 4px;
+}
+
+.sfbs-sub {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.52);
+  line-height: 1.4;
+}
+
+.sf-cite {
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.38);
+  letter-spacing: 0.05em;
+}
+
+/* ── 02 Solution: 태그 그리드 ── */
+.sf-tag-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.sf-tag {
+  padding: 14px 18px;
+  background: rgba(255,255,255,0.10);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 12px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.88);
+  text-align: center;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.35),
+    0 4px 14px rgba(0,0,0,0.18);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.sf-tag:hover {
+  background: rgba(0,212,255,0.14);
+  border-color: rgba(0,212,255,0.35);
+}
+
+/* ── 03 Process: 타임라인 ── */
+.sf-steps {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.sf-step {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 13px 18px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.20);
+  transition: background 0.2s;
+}
+
+.sf-step-active {
+  background: rgba(0,212,255,0.12);
+  border-color: rgba(0,212,255,0.40);
+  box-shadow:
+    inset 0 1px 0 rgba(0,212,255,0.30),
+    0 4px 16px rgba(0,212,255,0.18);
+}
+
+.sf-step-line {
+  width: 1px;
+  height: 14px;
+  background: rgba(255,255,255,0.18);
+  margin-left: 28px;
+}
+
+.sf-step-num {
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: #62EEFF;
+  letter-spacing: 0.12em;
+  min-width: 24px;
+}
+
+.sf-step-active .sf-step-num { color: #00D4FF; }
+
+.sf-step-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.92);
+  line-height: 1.2;
+}
+
+.sf-step-desc {
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.48);
+  margin-top: 2px;
 }
 
 /* (미사용 — 하위 호환 유지) */
