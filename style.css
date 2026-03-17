@@ -205,9 +205,35 @@ p {
   pointer-events: none;
 }
 
-/* ── 상단 영역 ── */
-.hf-top {
-  max-width: 600px;
+/* ── 좌우 분할 레이아웃 ── */
+.hf {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0;
+  padding: 52px 56px !important;
+}
+
+/* 좌측 60% — 브랜드·메시지 */
+.hf-left {
+  flex: 0 0 58%;
+  padding-right: 5vw;
+}
+
+/* 우측 40% — 스탯 원형 + 출처 */
+.hf-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* 원형 카드 행 */
+.hf-circles {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  justify-content: center;
 }
 
 /* 브랜드 칩 */
@@ -215,16 +241,16 @@ p {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.65rem;
+  font-size: 0.63rem;
   font-weight: 700;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.32);
-  background: rgba(255, 255, 255, 0.10);
+  color: rgba(255, 255, 255, 0.80);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.09);
   padding: 6px 16px;
   border-radius: 20px;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .hf-dot {
@@ -232,35 +258,58 @@ p {
   background: #00D4FF;
   border-radius: 50%;
   box-shadow: 0 0 6px #00D4FF;
+  flex-shrink: 0;
 }
 
-/* 킥 메시지 */
-.hf h1 {
-  font-size: clamp(1.7rem, 3vw, 3.2rem);
+/* ── h1 타이틀 ── */
+.hf-left h1 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 22px;
+}
+
+/* 상단 두 줄 — 가볍게 */
+.hf-h1-lead {
+  font-size: clamp(1.4rem, 2.4vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.025em;
+  color: rgba(255,255,255,0.82);
+  text-shadow: 0 2px 16px rgba(0,0,0,0.30);
+}
+
+/* 줄 간격 */
+.hf-h1-gap {
+  display: block;
+  height: 0.55em;
+}
+
+/* "전문가 파트너 그룹," — 굵고 크게 */
+.hf-h1-main {
+  font-size: clamp(1.9rem, 3.2vw, 3.4rem);
   font-weight: 800;
-  line-height: 1.22;
-  letter-spacing: -0.03em;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
   color: #ffffff;
-  margin-bottom: 18px;
   text-shadow: 0 2px 24px rgba(0,0,0,0.35);
 }
 
-.hf .point-color {
+/* "ORIGIN PARTNERS" — 영문 브랜드 */
+.hf-h1-brand {
+  font-size: clamp(1.1rem, 1.8vw, 2rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: #62EEFF;
+  margin-top: 6px;
+  text-shadow: 0 0 20px rgba(0,212,255,0.40);
 }
 
 .hf-sub {
-  font-size: clamp(0.85rem, 1.3vw, 1rem);
-  color: rgba(255, 255, 255, 0.68);
-  line-height: 1.75;
-  margin-bottom: 32px;
-}
-
-/* ── 하단 데이터 카드 행 ── */
-.hf-bottom {
-  display: flex;
-  gap: 18px;
-  align-items: center;
+  font-size: clamp(0.82rem, 1.2vw, 0.95rem);
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.8;
+  margin-bottom: 30px;
 }
 
 /* 개별 스탯 카드 — 원형 */
@@ -317,17 +366,12 @@ p {
 /* 원형에서 바 숨김 */
 .hfs-bar { display: none; }
 
-/* 소스 카드 */
+/* 출처 텍스트 — 카드 없이 */
 .hf-source {
-  background: transparent;
-  border-radius: 14px;
-  padding: 16px 20px;
-  min-width: 120px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   text-align: center;
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.14),
-    inset 0 1px 0 rgba(255, 255, 255, 0.35),
-    0 4px 14px rgba(0, 0, 0, 0.14);
 }
 
 .hfs-src-label {
@@ -335,14 +379,12 @@ p {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
-  margin-bottom: 5px;
+  color: rgba(255,255,255,0.28);
 }
 
 .hfs-src-text {
-  font-size: 0.72rem;
-  color: rgba(255,255,255,0.60);
-  line-height: 1.4;
+  font-size: 0.70rem;
+  color: rgba(255,255,255,0.48);
 }
 
 /* Problem (01): 협업/팀워크 이미지 */
@@ -1469,32 +1511,45 @@ p {
   }
 
   .hf {
-    padding: 28px 22px 22px !important;
+    flex-direction: column !important;
+    padding: 28px 22px 26px !important;
     border-radius: 18px !important;
+    gap: 28px !important;
   }
 
-  .hf h1 {
-    font-size: clamp(1.4rem, 5vw, 2rem) !important;
-    margin-bottom: 12px !important;
+  .hf-left {
+    flex: none !important;
+    padding-right: 0 !important;
+    width: 100%;
   }
+
+  .hf-right {
+    width: 100%;
+  }
+
+  .hf-h1-lead { font-size: clamp(1.1rem, 4vw, 1.5rem) !important; }
+  .hf-h1-main { font-size: clamp(1.4rem, 5.5vw, 2rem) !important; }
+  .hf-h1-brand { font-size: clamp(0.85rem, 3vw, 1.2rem) !important; }
 
   .hf-sub {
-    font-size: 0.82rem !important;
+    font-size: 0.80rem !important;
     margin-bottom: 20px !important;
   }
 
-  .hf-bottom {
-    flex-wrap: wrap;
-    gap: 10px;
+  .hf-circles {
+    gap: 12px;
   }
 
   .hf-stat-card {
-    width: 110px;
-    height: 110px;
+    width: 100px;
+    height: 100px;
   }
 
+  .hfs-num { font-size: 1.5rem !important; }
+  .hfs-label { font-size: 0.62rem !important; }
+
   .hf-source {
-    display: none;
+    justify-content: center;
   }
 
   .slide-vision {
