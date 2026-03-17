@@ -101,38 +101,34 @@ p {
 }
 
 /* ========================================
-   Horizontal Scroll Section
+   Z-Tunnel Scroll Section
    ======================================== */
 
-.horizontal-wrapper {
+.tunnel-section {
   position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
+  height: 400vh; /* 4 슬라이드 × 100vh 스크롤 공간 */
   z-index: 1;
 }
 
-.horizontal-container {
-  display: flex;
-  width: fit-content;
+.tunnel-sticky {
+  position: sticky;
+  top: 0;
   height: 100vh;
-  will-change: transform;
+  overflow: hidden;
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
 }
 
-.h-slide {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  padding: 5vw;
-  position: relative;
-}
-
-.h-slide .content {
-  max-width: 1200px;
+.tunnel-layer {
+  position: absolute;
+  top: 0; left: 0;
   width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 /* ========================================

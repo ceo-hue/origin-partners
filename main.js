@@ -162,88 +162,48 @@ function showAllElementsOnMobile() {
 }
 
 // ========================================
-// Horizontal Scroll (CSS Sticky 방식)
+// Z-Tunnel Scroll (Spatial Depth 방식)
 // ========================================
 
-function initHorizontalScroll() {
-  const wrapper = document.querySelector('.horizontal-wrapper');
-  const container = document.querySelector('.horizontal-container');
-  const slides = document.querySelectorAll('.h-slide');
+function initZTunnel() {
+  const section  = document.querySelector('.tunnel-section');
+  const layers   = document.querySelectorAll('.tunnel-layer');
+  if (!section || layers.length === 0) return;
 
-  if (!wrapper || !container || slides.length === 0) return;
+  const Z_SPACING = 700; // 레이어 간 Z 간격 (px)
 
-  // 모바일: 세로 스크롤
-  if (isMobile()) {
-    slides.forEach((slide) => {
-      const splitTexts = slide.querySelectorAll('.split-text');
-      const extraElements = slide.querySelectorAll('.capability-tags, .network-stats, .journey-steps');
+  function updateTunnel() {
+    const sectionTop    = section.getBoundingClientRect().top + window.scrollY;
+    const scrollInSec   = Math.max(0, window.scrollY - sectionTop);
+    const progress      = scrollInSec / window.innerHeight; // 0 ~ (layers.length-1)
 
-      ScrollTrigger.create({
-        trigger: slide,
-        start: "top 80%",
-        onEnter: () => {
-          splitTexts.forEach((text, i) => animateSplitText(text, i * 0.2));
-          extraElements.forEach((el, i) => {
-            gsap.to(el, { opacity: 1, y: 0, duration: 0.8, delay: 0.5 + i * 0.2, ease: "power3.out" });
-          });
-        },
-        once: true
-      });
-    });
-    return;
-  }
+    layers.forEach((layer, i) => {
+      const z       = (progress - i) * Z_SPACING;
+      // 카메라 뒤로 지나간 레이어는 즉시 숨김
+      const opacity = z > 150
+        ? 0
+        : Math.max(0, 1 - Math.abs(z) / (Z_SPACING * 1.3));
 
-  // PC: 가로 스크롤
-  const totalSlides = slides.length;
+      layer.style.transform     = `translateZ(${z}px)`;
+      layer.style.opacity       = opacity;
+      layer.style.pointerEvents = (z > 80 || z < -Z_SPACING * 1.6) ? 'none' : 'auto';
 
-  // 스크롤에 따라 container를 가로로 이동 (pin 사용)
-  // 슬라이드당 스크롤 거리를 줄여서 휠 몇 번으로 페이지 전환
-  const scrollPerSlide = window.innerHeight * 0.5; // 슬라이드당 50vh 스크롤
-  const totalScrollDistance = scrollPerSlide * (totalSlides - 1);
-
-  gsap.to(container, {
-    x: () => -(container.scrollWidth - window.innerWidth),
-    ease: "none",
-    scrollTrigger: {
-      trigger: wrapper,
-      start: "top top",
-      end: () => "+=" + totalScrollDistance,
-      pin: true,
-      scrub: 0.3,
-      anticipatePin: 1,
-      invalidateOnRefresh: true,
-      onUpdate: (self) => {
-        const progress = self.progress;
-        const slideIndex = Math.min(Math.floor(progress * totalSlides), totalSlides - 1);
-
-        if (slides[slideIndex]) {
-          const splitTexts = slides[slideIndex].querySelectorAll('.split-text');
-          splitTexts.forEach((text) => {
-            if (!text.classList.contains('animated')) {
-              text.classList.add('animated');
-              animateSplitText(text, 0);
-            }
-          });
-
-          const extraElements = slides[slideIndex].querySelectorAll('.capability-tags, .network-stats, .journey-steps');
-          extraElements.forEach((el) => {
-            if (!el.classList.contains('animated')) {
-              el.classList.add('animated');
-              gsap.to(el, { opacity: 1, y: 0, duration: 0.8, delay: 0.3, ease: "power3.out" });
-            }
-          });
-        }
+      // 현재 전면 레이어의 split-text 애니메이션
+      if (Math.abs(z) < 100 && !layer.classList.contains('animated')) {
+        layer.classList.add('animated');
+        layer.querySelectorAll('.split-text').forEach((t, idx) => animateSplitText(t, idx * 0.15));
       }
-    }
-  });
-
-  // 첫 슬라이드 애니메이션
-  const firstSlide = slides[0];
-  if (firstSlide) {
-    const firstSplitTexts = firstSlide.querySelectorAll('.split-text');
-    firstSplitTexts.forEach((text, i) => animateSplitText(text, 0.5 + i * 0.2));
-    firstSplitTexts.forEach(text => text.classList.add('animated'));
+    });
   }
+
+  // 첫 슬라이드 즉시 표시
+  layers[0].style.transform = 'translateZ(0px)';
+  layers[0].style.opacity   = '1';
+  layers[0].querySelectorAll('.split-text').forEach((t, i) => animateSplitText(t, 0.3 + i * 0.15));
+  layers[0].classList.add('animated');
+
+  window.addEventListener('scroll', updateTunnel, { passive: true });
+  updateTunnel();
 }
 
 // ========================================
@@ -347,7 +307,7 @@ function init() {
     }
 
     // PC: 전체 애니메이션 실행
-    initHorizontalScroll();
+    initZTunnel();
     initVerticalAnimations();
   });
 }
@@ -374,5 +334,3 @@ window.addEventListener('resize', () => {
   clearTimeout(window.resizeTimeout);
   window.resizeTimeout = setTimeout(() => ScrollTrigger.refresh(), 250);
 });
-
-window.addEventListener('load', () => ScrollTrigger.refresh());
