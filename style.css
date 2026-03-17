@@ -167,7 +167,7 @@ p {
   display: flex;
   flex-direction: row;         /* 좌우 분할 */
   align-items: center;
-  padding: 52px 60px 52px 60px;
+  padding: 52px 7vw 52px 9vw;   /* 좌측 여유 더 줘서 타이틀 중앙 이동 */
   color: #ffffff;
   position: relative;
   overflow: hidden;
@@ -303,15 +303,15 @@ p {
   margin-top: 28px;
 }
 
-/* ── 원형 스탯 카드 ── */
+/* ── 원형 스탯 카드 (이전 밝은 버전 복원) ── */
 .hf-stat-card {
   width: 140px;
   height: 140px;
   flex-shrink: 0;
   border-radius: 50%;
-  background: rgba(8, 15, 26, 0.55);   /* 배경 대비 강화 */
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -319,10 +319,10 @@ p {
   text-align: center;
   padding: 0 12px;
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.30),
-    inset 0 1.5px 0 rgba(255,255,255,0.50),
-    inset 0 -1px 0 rgba(0,0,0,0.20),
-    0 8px 32px rgba(0,0,0,0.35);
+    0 0 0 1px rgba(255,255,255,0.28),
+    inset 0 1.5px 0 rgba(255,255,255,0.55),
+    inset 0 -1px 0 rgba(0,0,0,0.14),
+    0 8px 28px rgba(0,0,0,0.22);
 }
 
 .hfs-num {
