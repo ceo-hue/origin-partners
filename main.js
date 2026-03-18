@@ -337,23 +337,21 @@ function initSlide01() {
   const bar1 = document.getElementById('s1Bar1');
   const bar2 = document.getElementById('s1Bar2');
   const bar3 = document.getElementById('s1Bar3');
-  if (!bar1) return;
+  if (!bar1) return null;
 
-  const panel = document.getElementById('slide01Panel');
-  const obs = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting) {
-      setTimeout(() => {
-        bar1.style.transition = 'width 1.2s cubic-bezier(0.22,1,0.36,1)';
-        bar2.style.transition = 'width 1.2s cubic-bezier(0.22,1,0.36,1) 0.12s';
-        bar3.style.transition = 'width 1.2s cubic-bezier(0.22,1,0.36,1) 0.24s';
-        bar1.style.width = '42%';
-        bar2.style.width = '29%';
-        bar3.style.width = '23%';
-      }, 150);
-      obs.disconnect();
-    }
-  }, { threshold: 0.35 });
-  obs.observe(panel);
+  let triggered = false;
+  return function triggerBars() {
+    if (triggered) return;
+    triggered = true;
+    setTimeout(() => {
+      bar1.style.transition = 'width 1.2s cubic-bezier(0.22,1,0.36,1)';
+      bar2.style.transition = 'width 1.2s cubic-bezier(0.22,1,0.36,1) 0.12s';
+      bar3.style.transition = 'width 1.2s cubic-bezier(0.22,1,0.36,1) 0.24s';
+      bar1.style.width = '42%';
+      bar2.style.width = '29%';
+      bar3.style.width = '23%';
+    }, 400);
+  };
 }
 
 // ========================================
@@ -474,17 +472,7 @@ function initSlide02() {
     step.addEventListener('click', () => s2Switch(idx));
   });
 
-  // 진입 시 초기화
-  const panel = document.getElementById('slide02Panel');
-  if (panel) {
-    const obs = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) {
-        s2Switch(0);
-        obs.disconnect();
-      }
-    }, { threshold: 0.3 });
-    obs.observe(panel);
-  }
+  return s2Switch;
 }
 
 // ========================================
@@ -638,17 +626,79 @@ function initSlide03() {
     step.addEventListener('click', () => s3Switch(idx));
   });
 
-  // 슬라이드 03 진입 시 초기화
-  const card = document.getElementById('s3Card');
-  if (card) {
-    const obs = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) {
-        setTimeout(() => s3Switch(0), 150);
-        obs.disconnect();
-      }
-    }, { threshold: 0.3 });
-    obs.observe(card);
+  return s3Switch;
+}
+
+// ========================================
+// Glass Carousel — 3D 틸트 버튼 네비게이션
+// ========================================
+
+function initGlassCarousel() {
+  const slides   = document.querySelectorAll('.gc-slide');
+  const bgs      = document.querySelectorAll('.gc-bg');
+  const dots     = document.querySelectorAll('.gc-dot');
+  const prevBtn  = document.getElementById('gcPrev');
+  const nextBtn  = document.getElementById('gcNext');
+  const curEl    = document.getElementById('gcCurrent');
+  if (!slides.length) return;
+
+  const total = slides.length;
+  let current = 0;
+
+  // 슬라이드별 초기화 함수 설정
+  const triggerBars = initSlide01();   // slide 0: 바 차트 애니메이션
+  const s2SwitchFn  = initSlide02();   // slide 1: 서비스 플로우
+  const s3SwitchFn  = initSlide03();   // slide 2: 프로세스 플로우
+  let s2Inited = false;
+  let s3Inited = false;
+
+  function getClass(idx) {
+    const diff = ((idx - current) + total) % total;
+    if (diff === 0)         return 'is-active';
+    if (diff === 1)         return 'is-next';
+    if (diff === total - 1) return 'is-prev';
+    return 'is-hidden';
   }
+
+  function goTo(idx) {
+    current = ((idx % total) + total) % total;
+
+    slides.forEach((s, i) => { s.className = 'gc-slide ' + getClass(i); });
+    bgs.forEach((b, i)    => { b.classList.toggle('is-active', i === current); });
+    dots.forEach((d, i)   => { d.classList.toggle('is-active', i === current); });
+    if (curEl) curEl.textContent = String(current + 1).padStart(2, '0');
+
+    // 슬라이드별 진입 애니메이션
+    if (current === 0 && triggerBars) triggerBars();
+    if (current === 1 && s2SwitchFn && !s2Inited) { s2Inited = true; s2SwitchFn(0); }
+    if (current === 2 && s3SwitchFn && !s3Inited) { s3Inited = true; setTimeout(() => s3SwitchFn(0), 150); }
+  }
+
+  prevBtn?.addEventListener('click', () => goTo(current - 1));
+  nextBtn?.addEventListener('click', () => goTo(current + 1));
+  dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
+
+  // 키보드 방향키 (캐러셀이 화면에 있을 때만)
+  document.addEventListener('keydown', e => {
+    const sec = document.getElementById('carousel-section');
+    if (!sec) return;
+    const r = sec.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > window.innerHeight) return;
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(current - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
+  });
+
+  // 터치 스와이프
+  let touchStartX = 0;
+  const stage = document.getElementById('gcStage');
+  stage?.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  stage?.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) goTo(dx < 0 ? current + 1 : current - 1);
+  }, { passive: true });
+
+  // 초기 상태 설정
+  goTo(0);
 }
 
 // ========================================
@@ -671,9 +721,7 @@ function init() {
     // PC: 전체 애니메이션 실행
     initHorizontalScroll();
     initVerticalAnimations();
-    initSlide01();
-    initSlide02();
-    initSlide03();
+    initGlassCarousel();
   });
 }
 
