@@ -11,12 +11,12 @@
   <!-- Particle Background Canvas -->
   <canvas id="particleCanvas"></canvas>
 
-  <!-- 인트로 섹션: 가로 스크롤 -->
-  <section class="horizontal-wrapper" id="intro-section">
-    <div class="horizontal-container">
+  <!-- 인트로 섹션: Z-Tunnel 스크롤 -->
+  <section class="tunnel-section" id="intro-section">
+    <div class="tunnel-sticky">
 
       <!-- 슬라이드 00: Hero — 대형 글래스 프레임 -->
-      <div class="h-slide slide-hero">
+      <div class="tunnel-layer slide-hero">
 
         <!-- 전체를 감싸는 대형 글래스 프레임 -->
         <div class="hf">
@@ -70,118 +70,311 @@
         </div>
       </div>
 
-      <!-- 슬라이드 01: Problem -->
-      <div class="h-slide slide-vision">
-        <div class="sf">
-          <div class="sf-left">
-            <div class="sf-chip"><span class="sf-dot"></span>PROBLEM 01</div>
-            <h2 class="split-text">
-              <span class="line">스타트업 <span class="point-color">42%</span>가</span>
-              <span class="line">문제 정의에서 실패합니다.</span>
-            </h2>
-            <div class="vision-text split-text">
-              <span class="line">아이디어는 많습니다.</span>
-              <span class="line">하지만 고객이 실제로 겪는 '진짜 문제'를 찾는 것이</span>
-              <span class="line">비즈니스 성공의 시작입니다.</span>
-              <span class="line">오리진 파트너스는 바로 그 지점에서 함께합니다.</span>
+      <!-- 슬라이드 01: Problem — 재설계 -->
+      <div class="tunnel-layer slide-vision">
+        <div class="s3-frame" id="slide01Panel">
+
+          <!-- LEFT 62% -->
+          <div class="s3-left">
+            <div class="s3-img"
+              style="background-image:url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80')">
+              <div class="s3-img-grad"></div>
+              <div class="s3-img-info">
+                <div class="s3-img-tag">PROBLEM 01</div>
+                <p class="s3-img-loc">📊 CB Insights 스타트업 실패 분석 · 2024</p>
+              </div>
+            </div>
+            <div class="sp-panel">
+              <div class="sp-panel-hd">
+                <span class="sp-panel-label">스타트업 실패 원인 분포</span>
+                <span class="sp-panel-badge">Top 3</span>
+              </div>
+              <div class="s1-bars">
+                <div class="s1-bar-row">
+                  <span class="s1-bar-name">시장 니즈 부재</span>
+                  <div class="s1-bar-track"><div class="s1-bar-fill s1-bar-fill-1" id="s1Bar1"></div></div>
+                  <span class="s1-bar-val">42%</span>
+                </div>
+                <div class="s1-bar-row">
+                  <span class="s1-bar-name">자본 부족</span>
+                  <div class="s1-bar-track"><div class="s1-bar-fill s1-bar-fill-2" id="s1Bar2"></div></div>
+                  <span class="s1-bar-val">29%</span>
+                </div>
+                <div class="s1-bar-row">
+                  <span class="s1-bar-name">팀 역량 한계</span>
+                  <div class="s1-bar-track"><div class="s1-bar-fill s1-bar-fill-3" id="s1Bar3"></div></div>
+                  <span class="s1-bar-val">23%</span>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="sf-right">
-            <div class="sf-big-stat">
-              <div class="sfbs-num">42<span>%</span></div>
-              <div class="sfbs-label">시장 니즈 부재</div>
-              <div class="sfbs-sub">스타트업 실패의 1위 원인</div>
+
+          <!-- RIGHT 38% -->
+          <div class="s3-right">
+            <div class="s3-stats-row">
+              <div class="s3-stat">
+                <div class="s3-stat-label">실패율 1위</div>
+                <div class="s3-stat-val">42%</div>
+              </div>
+              <div class="s3-stat">
+                <div class="s3-stat-label">자본 문제</div>
+                <div class="s3-stat-val">29%</div>
+              </div>
+              <div class="s3-stat">
+                <div class="s3-stat-label">팀 역량</div>
+                <div class="s3-stat-val">23%</div>
+              </div>
             </div>
-            <p class="sf-cite">— CB Insights, 2024</p>
+
+            <div class="s3-chip-label">PROBLEM 01</div>
+            <h2 class="s3-title">스타트업이<br>문제 정의에서<br>실패하는 이유</h2>
+            <p class="s3-desc">아이디어는 넘칩니다. 하지만 고객이 실제로 겪는 '진짜 문제'를 정의하지 못한 채 시작하는 것이 실패의 진짜 원인입니다. 오리진 파트너스는 바로 그 지점에서 함께합니다.</p>
+
+            <div class="s3-btns">
+              <a href="mailto:oscar421@naver.com" class="cta-primary" style="font-size:0.78rem;padding:11px 20px;border-radius:9999px;">무료 상담 시작하기</a>
+              <a href="#service-section" class="s3-btn-ghost">사례 보기</a>
+            </div>
+
+            <div class="sp-info-card">
+              <div class="sp-info-top">
+                <div class="sp-info-av">🔍</div>
+                <div>
+                  <div class="sp-info-nm">문제 발굴 전문팀</div>
+                  <div class="sp-info-role">Origin Partners · Problem Definition</div>
+                </div>
+              </div>
+              <div class="sp-info-stats">
+                <div class="sp-info-stat"><div class="sp-is-label">분석 기업</div><div class="sp-is-val">200+</div></div>
+                <div class="sp-info-stat bx"><div class="sp-is-label">성공률</div><div class="sp-is-val">87%</div></div>
+                <div class="sp-info-stat"><div class="sp-is-label">평균 기간</div><div class="sp-is-val">4주</div></div>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
 
-      <!-- 슬라이드 02: Solution -->
-      <div class="h-slide slide-philosophy">
-        <div class="sf">
-          <div class="sf-left">
-            <div class="sf-chip"><span class="sf-dot"></span>SOLUTION 02</div>
-            <h2 class="split-text">
-              <span class="line">4가지 전문 영역으로</span>
-              <span class="line"><span class="point-color">시작부터 투자까지</span> 함께합니다.</span>
-            </h2>
-            <div class="philosophy-desc split-text">
-              <span class="line">예비·초기 스타트업에게 필요한 모든 전문성을 한 팀에서.</span>
-              <span class="line">각 분야 시니어급 전문가들이 직접 함께합니다.</span>
+      <!-- 슬라이드 02: Solution — 재설계 -->
+      <div class="tunnel-layer slide-philosophy">
+        <div class="s3-frame" id="slide02Panel">
+
+          <!-- LEFT 62% -->
+          <div class="s3-left">
+            <div class="s3-img" id="s2ImgPanel"
+              style="background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80')">
+              <div class="s3-img-grad"></div>
+              <div class="s3-img-info">
+                <div class="s3-img-tag" id="s2ImgTag">SOLUTION 02 · BM 전략</div>
+                <p class="s3-img-loc" id="s2ImgLoc">📋 비즈니스 모델 캔버스 · 수익 구조 설계</p>
+              </div>
+            </div>
+            <div class="sp-panel">
+              <div class="sp-panel-hd">
+                <span class="sp-panel-label">6가지 전문 서비스</span>
+                <span class="sp-panel-badge">Select a Service</span>
+              </div>
+              <div class="s2-hflow" id="s2HFlow">
+                <div class="s2-hstep s2-active" data-svc="0">
+                  <div class="s2-hnum">01</div>
+                  <div class="s2-htitle">BM 전략</div>
+                </div>
+                <div class="s2-hstep" data-svc="1">
+                  <div class="s2-hnum">02</div>
+                  <div class="s2-htitle">IP 보호</div>
+                </div>
+                <div class="s2-hstep" data-svc="2">
+                  <div class="s2-hnum">03</div>
+                  <div class="s2-htitle">IR 컨설팅</div>
+                </div>
+                <div class="s2-hstep" data-svc="3">
+                  <div class="s2-hnum">04</div>
+                  <div class="s2-htitle">AI 워크플로우</div>
+                </div>
+                <div class="s2-hstep" data-svc="4">
+                  <div class="s2-hnum">05</div>
+                  <div class="s2-htitle">사업계획서</div>
+                </div>
+                <div class="s2-hstep" data-svc="5">
+                  <div class="s2-hnum">06</div>
+                  <div class="s2-htitle">마케팅</div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="sf-right">
-            <div class="sf-tag-grid">
-              <div class="sf-tag">BM 전략 설계</div>
-              <div class="sf-tag">IP 보호 전략</div>
-              <div class="sf-tag">IR 컨설팅</div>
-              <div class="sf-tag">AI 워크플로우</div>
-              <div class="sf-tag">사업계획서</div>
-              <div class="sf-tag">마케팅 전략</div>
+
+          <!-- RIGHT 38% -->
+          <div class="s3-right">
+            <div class="s3-stats-row">
+              <div class="s3-stat">
+                <div class="s3-stat-label" id="s2Stat1L">전문가</div>
+                <div class="s3-stat-val" id="s2Stat1V">12명</div>
+              </div>
+              <div class="s3-stat">
+                <div class="s3-stat-label" id="s2Stat2L">성공 사례</div>
+                <div class="s3-stat-val" id="s2Stat2V">340+</div>
+              </div>
+              <div class="s3-stat">
+                <div class="s3-stat-label" id="s2Stat3L">완료율</div>
+                <div class="s3-stat-val" id="s2Stat3V">92%</div>
+              </div>
+            </div>
+
+            <div class="s3-chip-label" id="s2StepLabel">SOLUTION 02 · BM 전략 설계</div>
+            <h2 class="s3-title" id="s2Title">BM<br>전략 설계</h2>
+            <p class="s3-desc" id="s2Desc">비즈니스 모델 캔버스를 기반으로 수익 구조와 고객 가치 제안을 체계적으로 설계합니다. 린 스타트업 방법론으로 빠른 가설 검증을 지원합니다.</p>
+
+            <div class="s2-ktags" id="s2KTags">
+              <span class="s2-ktag">수익 모델</span>
+              <span class="s2-ktag">린 캔버스</span>
+              <span class="s2-ktag">가치 제안</span>
+            </div>
+
+            <div class="s3-btns">
+              <a href="mailto:oscar421@naver.com" class="cta-primary" style="font-size:0.78rem;padding:11px 20px;border-radius:9999px;">상담 신청하기</a>
+              <a href="#service-section" class="s3-btn-ghost">서비스 전체보기</a>
+            </div>
+
+            <div class="sp-info-card" style="margin-top:auto;">
+              <div class="sp-info-top">
+                <div class="sp-info-av" id="s2InfoAv">📋</div>
+                <div>
+                  <div class="sp-info-nm" id="s2InfoNm">BM 전략 설계 전문팀</div>
+                  <div class="sp-info-role">Origin Partners · Business Strategy</div>
+                </div>
+              </div>
+              <div class="sp-info-stats">
+                <div class="sp-info-stat"><div class="sp-is-label">완료 프로젝트</div><div class="sp-is-val">340+</div></div>
+                <div class="sp-info-stat bx"><div class="sp-is-label">파트너사</div><div class="sp-is-val">28개</div></div>
+                <div class="sp-info-stat"><div class="sp-is-label">투자연결</div><div class="sp-is-val">62억+</div></div>
+              </div>
             </div>
           </div>
+
         </div>
       </div>
 
-      <!-- 슬라이드 03: Process -->
-      <div class="h-slide slide-difference">
-        <div class="sf">
-          <div class="sf-left">
-            <div class="sf-chip"><span class="sf-dot"></span>PROCESS 03</div>
-            <h2 class="split-text">
-              <span class="line">문제 발굴부터</span>
-              <span class="line"><span class="point-color">투자 연결</span>까지, 5단계 파트너십.</span>
-            </h2>
-            <div class="philosophy-desc split-text">
-              <span class="line">아이디어 단계부터 함께 시작합니다.</span>
-              <span class="line">각 단계마다 검증된 전문가와 AI 워크플로우가 실행 속도를 높입니다.</span>
+      <!-- 슬라이드 03: Process — 재설계 -->
+      <div class="tunnel-layer slide-difference">
+        <div class="s3-frame" id="slide03">
+
+          <!-- LEFT 62%: 이미지 패널 + 가로 스테퍼 -->
+          <div class="s3-left">
+            <div class="s3-img" id="s3ImgPanel"
+              style="background-image:url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1200&q=80')">
+              <div class="s3-img-grad"></div>
+              <div class="s3-img-info">
+                <div class="s3-img-tag" id="s3ImgTag">STEP 01 · 문제 발굴</div>
+                <p class="s3-img-loc" id="s3ImgLoc">👥 고객 인터뷰 · 문제 정의 · 가설 검증</p>
+              </div>
             </div>
-          </div>
-          <div class="sf-right">
-            <div class="sf-steps">
-              <div class="sf-step">
-                <div class="sf-step-num">01</div>
-                <div class="sf-step-info">
-                  <div class="sf-step-title">문제 발굴</div>
-                  <div class="sf-step-desc">고객 문제 정의 & 검증</div>
-                </div>
+
+            <div class="s3-flow-panel">
+              <div class="s3-flow-hd">
+                <span class="s3-flow-label">파트너십 로드맵</span>
+                <span class="s3-flow-badge">5 Steps · 평균 12주</span>
               </div>
-              <div class="sf-step-line"></div>
-              <div class="sf-step">
-                <div class="sf-step-num">02</div>
-                <div class="sf-step-info">
-                  <div class="sf-step-title">전략 설계 (AI)</div>
-                  <div class="sf-step-desc">BM 설계 & AI 워크플로우</div>
+              <div class="s3-hflow" id="s3HFlow">
+                <div class="s3-hstep s3-active" data-step="0">
+                  <div class="s3-hnum">01</div>
+                  <div class="s3-htitle">문제 발굴</div>
+                  <div class="s3-hdur">2주</div>
                 </div>
-              </div>
-              <div class="sf-step-line"></div>
-              <div class="sf-step">
-                <div class="sf-step-num">03</div>
-                <div class="sf-step-info">
-                  <div class="sf-step-title">실행 지원</div>
-                  <div class="sf-step-desc">사업계획서 & 마케팅</div>
+                <div class="s3-hstep" data-step="1">
+                  <div class="s3-hnum">02</div>
+                  <div class="s3-htitle">전략 설계</div>
+                  <div class="s3-hdur">3주</div>
                 </div>
-              </div>
-              <div class="sf-step-line"></div>
-              <div class="sf-step">
-                <div class="sf-step-num">04</div>
-                <div class="sf-step-info">
-                  <div class="sf-step-title">정부지원사업</div>
-                  <div class="sf-step-desc">IR 준비 & 지원사업 연결</div>
+                <div class="s3-hstep" data-step="2">
+                  <div class="s3-hnum">03</div>
+                  <div class="s3-htitle">실행 지원</div>
+                  <div class="s3-hdur">3주</div>
                 </div>
-              </div>
-              <div class="sf-step-line"></div>
-              <div class="sf-step sf-step-active">
-                <div class="sf-step-num">05</div>
-                <div class="sf-step-info">
-                  <div class="sf-step-title">투자 · 성장</div>
-                  <div class="sf-step-desc">VC 네트워크 연결</div>
+                <div class="s3-hstep" data-step="3">
+                  <div class="s3-hnum">04</div>
+                  <div class="s3-htitle">정부지원</div>
+                  <div class="s3-hdur">2주</div>
+                </div>
+                <div class="s3-hstep" data-step="4">
+                  <div class="s3-hnum">05</div>
+                  <div class="s3-htitle">투자·성장</div>
+                  <div class="s3-hdur">상시</div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+
+          <!-- RIGHT 38%: 콘텐츠 + 성과 카드 -->
+          <div class="s3-right">
+            <div class="s3-stats-row">
+              <div class="s3-stat">
+                <div class="s3-stat-label" id="s3Stat1L">인터뷰</div>
+                <div class="s3-stat-val" id="s3Stat1V">42건</div>
+              </div>
+              <div class="s3-stat">
+                <div class="s3-stat-label" id="s3Stat2L">가설 검증</div>
+                <div class="s3-stat-val" id="s3Stat2V">12개</div>
+              </div>
+              <div class="s3-stat">
+                <div class="s3-stat-label" id="s3Stat3L">정확도</div>
+                <div class="s3-stat-val" id="s3Stat3V">89%</div>
+              </div>
+            </div>
+
+            <div class="s3-chip-label" id="s3StepLabel">STEP 01 · 문제 발굴</div>
+            <h2 class="s3-title">문제 발굴부터<br>투자 연결까지<br>5단계.</h2>
+            <p class="s3-desc" id="s3Desc">표면적 증상이 아닌 고객의 근본 문제를 발굴합니다. 인터뷰 설계부터 가설 검증까지, 실제 시장 데이터를 기반으로 "풀어야 할 진짜 문제"를 정의합니다.</p>
+
+            <div class="s3-btns">
+              <a href="mailto:oscar421@naver.com" class="cta-primary" style="font-size:0.78rem;padding:11px 20px;border-radius:9999px;">파트너십 시작하기</a>
+              <a href="#journey-map-section" class="s3-btn-ghost">프로세스 상세보기</a>
+            </div>
+
+            <div class="s3-card" id="s3Card">
+              <div class="s3-card-hd">
+                <span class="s3-card-title" id="s3CardLabel">단계 성과 지표</span>
+                <span class="s3-card-badge" id="s3CardBadge">STEP 01</span>
+              </div>
+              <div class="s3-metrics">
+                <div class="s3-metric">
+                  <div class="s3-metric-val" id="s3M1V">89<em id="s3M1U">%</em></div>
+                  <div class="s3-metric-label" id="s3M1L">문제 정의 정확도</div>
+                </div>
+                <div class="s3-metric">
+                  <div class="s3-metric-val" id="s3M2V">94<em id="s3M2U">%</em></div>
+                  <div class="s3-metric-label" id="s3M2L">고객 공감 지수</div>
+                </div>
+                <div class="s3-metric">
+                  <div class="s3-metric-val" id="s3M3V">76<em id="s3M3U">%</em></div>
+                  <div class="s3-metric-label" id="s3M3L">시장 검증률</div>
+                </div>
+              </div>
+              <div class="s3-bars">
+                <div>
+                  <div class="s3-bar-hd">
+                    <span class="s3-bar-lbl" id="s3BL1">문제 정의 정확도</span>
+                    <span class="s3-bar-pct" id="s3BP1">89%</span>
+                  </div>
+                  <div class="s3-bar-track"><div class="s3-bar-fill" id="s3BF1"></div></div>
+                </div>
+                <div>
+                  <div class="s3-bar-hd">
+                    <span class="s3-bar-lbl" id="s3BL2">고객 공감 지수</span>
+                    <span class="s3-bar-pct" id="s3BP2">94%</span>
+                  </div>
+                  <div class="s3-bar-track"><div class="s3-bar-fill" id="s3BF2"></div></div>
+                </div>
+                <div>
+                  <div class="s3-bar-hd">
+                    <span class="s3-bar-lbl" id="s3BL3">시장 검증률</span>
+                    <span class="s3-bar-pct" id="s3BP3">76%</span>
+                  </div>
+                  <div class="s3-bar-track"><div class="s3-bar-fill" id="s3BF3"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /s3-frame -->
       </div>
 
     </div>
