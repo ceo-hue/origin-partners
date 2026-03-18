@@ -363,24 +363,269 @@ p {
   color: rgba(255,255,255,0.45);
 }
 
-/* Problem (01) — 안개 속 인물: 방향을 잃은 불확실성 */
+/* Problem (01) */
 .slide-vision {
   background:
-    linear-gradient(160deg, rgba(8,15,26,0.52) 0%, rgba(13,24,41,0.45) 100%),
-    url('https://images.unsplash.com/photo-1476610182048-b716b8518aae?w=1920&q=80') center/cover no-repeat;
+    linear-gradient(160deg, rgba(6,12,22,0.62) 0%, rgba(10,18,36,0.58) 100%),
+    url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80') center/cover no-repeat;
   padding: 3vh 3vw;
   align-items: stretch;
+  justify-content: stretch;
+}
+
+/* Solution (02) */
+.slide-philosophy {
+  background:
+    linear-gradient(160deg, rgba(6,12,22,0.62) 0%, rgba(10,18,36,0.58) 100%),
+    url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80') center/cover no-repeat;
+  padding: 3vh 3vw;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+/* ── 공통: 하단 데이터 패널 (s1 / s2 공유) ── */
+.sp-panel {
+  flex-shrink: 0;
+  height: 116px;
+  background: rgba(4,10,20,0.62);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255,255,255,0.10);
+  padding: 10px 22px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sp-panel-hd {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.sp-panel-label {
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.42);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.sp-panel-badge {
+  font-size: 0.56rem;
+  font-weight: 700;
+  color: rgba(0,212,255,0.80);
+  background: rgba(0,212,255,0.08);
+  border: 1px solid rgba(0,212,255,0.22);
+  padding: 2px 10px;
+  border-radius: 20px;
+}
+
+/* ── Slide 01 — 실패 원인 바 차트 ── */
+.s1-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
   justify-content: center;
 }
 
-/* Solution (02) — 구름 뚫고 나온 산봉우리: 돌파구 */
-.slide-philosophy {
-  background:
-    linear-gradient(160deg, rgba(8,15,26,0.50) 0%, rgba(19,32,53,0.42) 100%),
-    url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80') center/cover no-repeat;
-  padding: 3vh 3vw;
-  align-items: stretch;
-  justify-content: center;
+.s1-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.s1-bar-name {
+  font-size: 0.60rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  white-space: nowrap;
+  width: 80px;
+  flex-shrink: 0;
+}
+
+.s1-bar-track {
+  flex: 1;
+  height: 5px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.s1-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  width: 0%;
+  transition: width 1.2s cubic-bezier(0.22,1,0.36,1);
+}
+
+.s1-bar-fill-1 { background: linear-gradient(to right, rgba(0,212,255,0.5), #00D4FF); }
+.s1-bar-fill-2 { background: linear-gradient(to right, rgba(100,190,255,0.5), rgba(80,160,255,0.9)); }
+.s1-bar-fill-3 { background: linear-gradient(to right, rgba(160,210,255,0.4), rgba(130,185,255,0.8)); }
+
+.s1-bar-val {
+  font-size: 0.60rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.72);
+  width: 28px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ── 공통: 우측 인포 카드 ── */
+.sp-info-card {
+  margin-top: auto;
+  background: rgba(0,0,0,0.28);
+  border: 1px solid rgba(255,255,255,0.11);
+  border-radius: 14px;
+  padding: 12px 14px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+}
+
+.sp-info-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.sp-info-av {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(0,212,255,0.12);
+  border: 1px solid rgba(0,212,255,0.25);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.sp-info-nm {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.88);
+  margin-bottom: 2px;
+}
+
+.sp-info-role {
+  font-size: 0.56rem;
+  color: rgba(255,255,255,0.38);
+}
+
+.sp-info-stats {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+}
+
+.sp-info-stat { text-align: center; }
+.sp-info-stat.bx {
+  border-left: 1px solid rgba(255,255,255,0.08);
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.sp-is-label {
+  font-size: 0.52rem;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 2px;
+}
+
+.sp-is-val {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.88);
+  letter-spacing: -0.02em;
+}
+
+/* ── Slide 02 — 서비스 6단계 가로 플로우 ── */
+.s2-hflow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.s2-hstep {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  padding: 0 2px;
+  transition: opacity 0.2s;
+}
+
+.s2-hstep::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: calc(-50% + 10px);
+  right: calc(50% + 10px);
+  height: 1px;
+  background: rgba(255,255,255,0.10);
+  transition: background 0.3s;
+}
+.s2-hstep:first-child::before { display: none; }
+.s2-hstep.s2-active::before {
+  background: linear-gradient(to right, rgba(0,212,255,0.5), rgba(0,212,255,0.3));
+}
+
+.s2-hnum {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.05);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.48rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.30);
+  margin-bottom: 5px;
+  flex-shrink: 0;
+  transition: all 0.25s;
+}
+
+.s2-hstep.s2-active .s2-hnum {
+  width: 24px; height: 24px;
+  margin-bottom: 3px;
+  background: #00D4FF;
+  border-color: #00D4FF;
+  color: #000c18;
+  font-size: 0.54rem;
+  box-shadow: 0 0 12px rgba(0,212,255,0.65);
+}
+
+.s2-htitle {
+  font-size: 0.54rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.25);
+  text-align: center;
+  white-space: nowrap;
+  transition: color 0.25s;
+}
+.s2-hstep.s2-active .s2-htitle { color: rgba(255,255,255,0.90); }
+
+/* Slide 02 우측 키워드 태그 */
+.s2-ktags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+  flex-shrink: 0;
+}
+
+.s2-ktag {
+  padding: 4px 11px;
+  background: rgba(0,212,255,0.08);
+  border: 1px solid rgba(0,212,255,0.22);
+  border-radius: 20px;
+  font-size: 0.60rem;
+  font-weight: 600;
+  color: rgba(0,212,255,0.85);
+  letter-spacing: 0.02em;
+  transition: all 0.2s;
 }
 
 /* Process (03) — Slide 03 재설계 */

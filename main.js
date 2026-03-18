@@ -298,6 +298,164 @@ function initVerticalAnimations() {
 }
 
 // ========================================
+// Slide 01 — 실패 원인 바 차트 애니메이션
+// ========================================
+
+function initSlide01() {
+  const bar1 = document.getElementById('s1Bar1');
+  const bar2 = document.getElementById('s1Bar2');
+  const bar3 = document.getElementById('s1Bar3');
+  if (!bar1) return;
+
+  const panel = document.getElementById('slide01Panel');
+  const obs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      setTimeout(() => {
+        bar1.style.transition = 'width 1.2s cubic-bezier(0.22,1,0.36,1)';
+        bar2.style.transition = 'width 1.2s cubic-bezier(0.22,1,0.36,1) 0.12s';
+        bar3.style.transition = 'width 1.2s cubic-bezier(0.22,1,0.36,1) 0.24s';
+        bar1.style.width = '42%';
+        bar2.style.width = '29%';
+        bar3.style.width = '23%';
+      }, 150);
+      obs.disconnect();
+    }
+  }, { threshold: 0.35 });
+  obs.observe(panel);
+}
+
+// ========================================
+// Slide 02 — 6개 서비스 인터랙티브 플로우
+// ========================================
+
+function initSlide02() {
+  const s2Data = [
+    {
+      img:  'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80',
+      tag:  'SOLUTION 02 · BM 전략', loc: '📋 비즈니스 모델 캔버스 · 수익 구조 설계',
+      step: 'SOLUTION 02 · BM 전략 설계',
+      title:'BM<br>전략 설계',
+      desc: '비즈니스 모델 캔버스를 기반으로 수익 구조와 고객 가치 제안을 체계적으로 설계합니다. 린 스타트업 방법론으로 빠른 가설 검증을 지원합니다.',
+      tags: ['수익 모델', '린 캔버스', '가치 제안'],
+      s1l:'전문가', s1v:'12명', s2l:'성공 사례', s2v:'340+', s3l:'완료율', s3v:'92%',
+      av: '📋', nm: 'BM 전략 설계 전문팀',
+    },
+    {
+      img:  'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&q=80',
+      tag:  'SOLUTION 02 · IP 보호', loc: '🔒 특허·상표·디자인권 · 변리사 파트너',
+      step: 'SOLUTION 02 · IP 보호 전략',
+      title:'IP<br>보호 전략',
+      desc: '핵심 기술과 브랜드를 특허·상표·디자인권으로 보호합니다. 변리사 파트너와 연계해 빠르고 정확하게 지식재산권을 확보합니다.',
+      tags: ['특허 출원', '상표 등록', '기술 보호'],
+      s1l:'파트너 변리사', s1v:'8명', s2l:'출원 성공', s2v:'96%', s3l:'평균 기간', s3v:'3주',
+      av: '🔒', nm: 'IP 법률 파트너팀',
+    },
+    {
+      img:  'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&q=80',
+      tag:  'SOLUTION 02 · IR 컨설팅', loc: '💼 투자자 덱 · 피칭 전략 · 밸류에이션',
+      step: 'SOLUTION 02 · IR 컨설팅',
+      title:'IR<br>컨설팅',
+      desc: '투자자 관점의 IR 덱과 피칭 전략으로 투자 유치 성공률을 높입니다. 시드부터 시리즈A까지 단계별 밸류에이션 전략을 설계합니다.',
+      tags: ['IR 덱', '피칭 전략', '밸류에이션'],
+      s1l:'VC 파트너', s1v:'28개', s2l:'투자 연결', s2v:'62억+', s3l:'성공률', s3v:'78%',
+      av: '💼', nm: 'IR 컨설팅 전문팀',
+    },
+    {
+      img:  'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&q=80',
+      tag:  'SOLUTION 02 · AI 워크플로우', loc: '🤖 GPT 연동 · 자동화 · 실행 속도 3배',
+      step: 'SOLUTION 02 · AI 워크플로우',
+      title:'AI<br>워크플로우',
+      desc: 'AI 도구를 실무에 내재화하여 팀의 실행 속도를 3배 이상 끌어올립니다. GPT 연동부터 자동화 파이프라인까지 맞춤 설계합니다.',
+      tags: ['GPT 연동', '자동화', '속도 3배'],
+      s1l:'AI 도구', s1v:'14개', s2l:'속도 향상', s2v:'3배', s3l:'적용률', s3v:'88%',
+      av: '🤖', nm: 'AI 워크플로우팀',
+    },
+    {
+      img:  'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80',
+      tag:  'SOLUTION 02 · 사업계획서', loc: '📄 P.S.S.T 프레임워크 · 정부지원사업',
+      step: 'SOLUTION 02 · 사업계획서',
+      title:'사업계획서<br>P.S.S.T',
+      desc: 'P.S.S.T 프레임워크로 정부지원사업에 특화된 사업계획서를 작성합니다. 심사위원 관점에서 설득력 있는 서류를 완성합니다.',
+      tags: ['P.S.S.T', '정부사업', '서류 최적화'],
+      s1l:'통과율', s1v:'94%', s2l:'지원 프로그램', s2v:'340+', s3l:'재신청률', s3v:'72%',
+      av: '📄', nm: '사업계획서 전문팀',
+    },
+    {
+      img:  'https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=1200&q=80',
+      tag:  'SOLUTION 02 · 마케팅 전략', loc: '📣 GTM 전략 · 그로스 해킹 · 채널 믹스',
+      step: 'SOLUTION 02 · 마케팅 전략',
+      title:'마케팅<br>전략',
+      desc: '초기 고객 확보부터 그로스 해킹까지 데이터 기반 마케팅을 설계합니다. GTM 전략과 채널 믹스로 최소 비용 최대 성과를 달성합니다.',
+      tags: ['GTM 전략', '그로스 해킹', '채널 믹스'],
+      s1l:'획득 채널', s1v:'28개', s2l:'ROI', s2v:'3.2배', s3l:'CAC 절감', s3v:'40%',
+      av: '📣', nm: '마케팅 전략팀',
+    },
+  ];
+
+  const s2Steps  = document.querySelectorAll('.s2-hstep');
+  const s2ImgPanel = document.getElementById('s2ImgPanel');
+  if (!s2ImgPanel) return;
+
+  const s2ImgTag  = document.getElementById('s2ImgTag');
+  const s2ImgLoc  = document.getElementById('s2ImgLoc');
+  const s2StepLbl = document.getElementById('s2StepLabel');
+  const s2TitleEl = document.getElementById('s2Title');
+  const s2DescEl  = document.getElementById('s2Desc');
+  const s2KTagsEl = document.getElementById('s2KTags');
+  const s2InfoAv  = document.getElementById('s2InfoAv');
+  const s2InfoNm  = document.getElementById('s2InfoNm');
+  const s2S1l = document.getElementById('s2Stat1L'), s2S1v = document.getElementById('s2Stat1V');
+  const s2S2l = document.getElementById('s2Stat2L'), s2S2v = document.getElementById('s2Stat2V');
+  const s2S3l = document.getElementById('s2Stat3L'), s2S3v = document.getElementById('s2Stat3V');
+
+  function s2Switch(idx) {
+    const d = s2Data[idx];
+    s2Steps.forEach((s, i) => {
+      s.classList.toggle('s2-active', i === idx);
+    });
+    s2ImgPanel.style.opacity = '0';
+    setTimeout(() => {
+      s2ImgPanel.style.backgroundImage = `url('${d.img}')`;
+      s2ImgTag.textContent = d.tag;
+      s2ImgLoc.textContent = d.loc;
+      s2ImgPanel.style.opacity = '1';
+    }, 280);
+
+    s2DescEl.classList.add('s3-desc-out');
+    setTimeout(() => {
+      s2StepLbl.textContent   = d.step;
+      s2TitleEl.innerHTML     = d.title;
+      s2DescEl.textContent    = d.desc;
+      s2KTagsEl.innerHTML     = d.tags.map(t => `<span class="s2-ktag">${t}</span>`).join('');
+      s2InfoAv.textContent    = d.av;
+      s2InfoNm.textContent    = d.nm;
+      s2S1l.textContent = d.s1l; s2S1v.textContent = d.s1v;
+      s2S2l.textContent = d.s2l; s2S2v.textContent = d.s2v;
+      s2S3l.textContent = d.s3l; s2S3v.textContent = d.s3v;
+      s2DescEl.classList.remove('s3-desc-out');
+      s2DescEl.classList.add('s3-desc-in');
+      setTimeout(() => s2DescEl.classList.remove('s3-desc-in'), 350);
+    }, 200);
+  }
+
+  s2Steps.forEach((step, idx) => {
+    step.addEventListener('click', () => s2Switch(idx));
+  });
+
+  // 진입 시 초기화
+  const panel = document.getElementById('slide02Panel');
+  if (panel) {
+    const obs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        s2Switch(0);
+        obs.disconnect();
+      }
+    }, { threshold: 0.3 });
+    obs.observe(panel);
+  }
+}
+
+// ========================================
 // Slide 03 — 5단계 인터랙티브 플로우
 // ========================================
 
@@ -481,6 +639,8 @@ function init() {
     // PC: 전체 애니메이션 실행
     initZTunnel();
     initVerticalAnimations();
+    initSlide01();
+    initSlide02();
     initSlide03();
   });
 }
