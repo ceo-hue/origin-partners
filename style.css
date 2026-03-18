@@ -101,34 +101,27 @@ p {
 }
 
 /* ========================================
-   Z-Tunnel Scroll Section
+   Hero Section
    ======================================== */
 
 .tunnel-section {
   position: relative;
-  height: 200vh; /* 히어로 + 스크롤 퇴장 공간 */
+  height: 100vh;
   z-index: 1;
 }
 
 .tunnel-sticky {
-  position: sticky;
-  top: 0;
+  position: relative;
   height: 100vh;
   overflow: hidden;
-  perspective: 1200px;
-  perspective-origin: 50% 50%;
 }
 
 .tunnel-layer {
-  position: absolute;
-  top: 0; left: 0;
   width: 100%;
   height: 100%;
   display: flex;
   align-items: stretch;
   justify-content: center;
-  will-change: transform, opacity;
-  backface-visibility: hidden;
 }
 
 /* ========================================
