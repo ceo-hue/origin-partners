@@ -178,23 +178,15 @@ function initZTunnel() {
     const progress      = scrollInSec / window.innerHeight; // 0 ~ (layers.length-1)
 
     layers.forEach((layer, i) => {
-      const z = (progress - i) * Z_SPACING;
-
-      // 현재 전면(z≈0) 에서만 보이도록 — 겹침 방지
-      let opacity;
-      if (z > 120) {
-        opacity = 0;                              // 카메라 뒤로 지남 → 즉시 숨김
-      } else if (z > 0) {
-        opacity = Math.max(0, 1 - z / 120);      // 0→120 : 빠르게 fade-out
-      } else if (z > -280) {
-        opacity = Math.max(0, (z + 280) / 280);  // -280→0 : fade-in 구간만
-      } else {
-        opacity = 0;                              // 아직 멀리 있는 레이어 → 숨김
-      }
+      const z       = (progress - i) * Z_SPACING;
+      // 카메라 뒤로 지나간 레이어는 즉시 숨김
+      const opacity = z > 150
+        ? 0
+        : Math.max(0, 1 - Math.abs(z) / (Z_SPACING * 1.3));
 
       layer.style.transform     = `translateZ(${z}px)`;
       layer.style.opacity       = opacity;
-      layer.style.pointerEvents = (z > 80 || z < -300) ? 'none' : 'auto';
+      layer.style.pointerEvents = (z > 80 || z < -Z_SPACING * 1.6) ? 'none' : 'auto';
 
       // 현재 전면 레이어의 split-text 애니메이션
       if (Math.abs(z) < 100 && !layer.classList.contains('animated')) {
