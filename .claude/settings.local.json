@@ -18,7 +18,32 @@
       "Bash(git remote set-url:*)",
       "Bash(gh repo view:*)",
       "Bash(gh api:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(ls:*)",
+      "Bash(npx http-server:*)",
+      "WebFetch(domain:kr.freepik.com)",
+      "WebFetch(domain:unsplash.com)",
+      "Bash(curl:*)",
+      "Bash(start:*)",
+      "WebFetch(domain:www.bluepoint.ac)",
+      "WebFetch(domain:www.primer.kr)",
+      "WebFetch(domain:www.ycombinator.com)",
+      "WebFetch(domain:www.markcompany.kr)",
+      "WebFetch(domain:markcompany.kr)",
+      "WebFetch(domain:www.mark-company.com)",
+      "WebSearch",
+      "WebFetch(domain:markncompany.co.kr)",
+      "Read(//c/Users/garsi/OneDrive/바탕 화면/사이트개발/**)",
+      "Bash(vercel --prod --yes)",
+      "Bash(npm i:*)",
+      "Bash(vercel link:*)",
+      "Bash(vercel whoami:*)",
+      "Bash(vercel ls:*)",
+      "Bash(vercel promote:*)",
+      "Bash(npx vercel:*)",
+      "Bash(findstr /c:\"sub-slide\" \"C:\\\\Users\\\\garsi\\\\OneDrive\\\\바탕 화면\\\\origin-partners-bento-sample.html\")",
+      "Bash(python -c \":*)",
+      "Bash(vercel deploy:*)"
     ]
   }
 }
