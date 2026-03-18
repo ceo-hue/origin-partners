@@ -687,7 +687,6 @@ function init() {
     }
 
     // PC: 전체 애니메이션 실행
-    initZTunnel();
     initVerticalAnimations();
     initGlassCarousel();
   });
