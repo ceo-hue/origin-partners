@@ -328,58 +328,76 @@ function initSlide01() {
 
 const s2Data = [
   {
-    img:   'https://images.unsplash.com/photo-1553484771-047a44eee27a?w=1200&q=80',
-    tag:   'SOLUTION 02 · BM 전략',
-    loc:   '🗂 비즈니스 모델 · 수익 구조 · 린 설계',
-    chip:  'SOLUTION 02 · BM 전략',
-    title: '수익 구조가 전략이다',
-    desc:  'AI 시대엔 아이디어보다 지속 가능한 수익 구조가 먼저입니다.<br>린 캔버스 한 장이 투자자와 고객 모두를 설득하는 언어가 됩니다.',
-    tags:  ['린 캔버스', '수익 모델', 'PMF 검증'],
+    img:  'https://images.unsplash.com/photo-1553484771-047a44eee27a?w=1200&q=80',
+    tag:  'SOLUTION 02 · BM 전략', loc: '🗂 비즈니스 모델 · 수익 구조 · 린 설계',
+    chip: 'SOLUTION 02 · BM 전략', title: '수익 구조가 전략이다',
+    desc: 'AI 시대엔 아이디어보다 지속 가능한 수익 구조가 먼저입니다.<br>린 캔버스 한 장이 투자자와 고객 모두를 설득하는 언어가 됩니다.',
+    tags: ['린 캔버스', '수익 모델', 'PMF 검증'],
+    pillars: [
+      { num:'72%', icon:'🗂', name:'BM 재설계', sub:'투자 유치 전<br>BM을 재설계한 비율', stat:'린 캔버스 적용 후<br><strong>IR 통과율 3배↑</strong>' },
+      { num:'42%', icon:'📊', name:'PMF 검증',  sub:'PMF 없이 출시해<br>실패한 스타트업', stat:'얼리어답터 20명<br><strong>= 시장 검증 완료</strong>' },
+      { num:'6주', icon:'⚙️', name:'설계 기간', sub:'체계적 BM 설계<br>평균 완성 기간', stat:'오리진 파트너스<br><strong>시행착오 최소화</strong>' },
+    ],
   },
   {
-    img:   'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&q=80',
-    tag:   'SOLUTION 02 · IP 보호',
-    loc:   '⚖️ 특허 · 상표 · 기술보호 전략',
-    chip:  'SOLUTION 02 · IP 보호',
-    title: '기술은 등록해야 자산이다',
-    desc:  '아이디어를 실행하는 순간, 카피캣은 이미 준비 중입니다.<br>특허·상표·기술보호를 선제적으로 확보해야 경쟁 우위가 법적으로 완성됩니다.',
-    tags:  ['특허 전략', '상표권', '기술 자산화'],
+    img:  'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&q=80',
+    tag:  'SOLUTION 02 · IP 보호', loc: '⚖️ 특허 · 상표 · 기술보호 전략',
+    chip: 'SOLUTION 02 · IP 보호', title: '기술은 등록해야 자산이다',
+    desc: '아이디어를 실행하는 순간, 카피캣은 이미 준비 중입니다.<br>특허·상표·기술보호를 선제적으로 확보해야 경쟁 우위가 법적으로 완성됩니다.',
+    tags: ['특허 전략', '상표권', '기술 자산화'],
+    pillars: [
+      { num:'73%', icon:'⚖️', name:'카피캣 피해', sub:'특허 없이 시작한<br>스타트업 피해 경험률', stat:'선출원주의<br><strong>먼저가 우선권</strong>' },
+      { num:'5배', icon:'💎', name:'기업 가치',  sub:'특허 보유 스타트업<br>밸류에이션 프리미엄', stat:'IP 포트폴리오<br><strong>기술특례 상장 가능</strong>' },
+      { num:'18개월', icon:'⏱', name:'출원 기간', sub:'출원~등록<br>평균 소요 기간', stat:'선제적 출원으로<br><strong>골든타임 사수</strong>' },
+    ],
   },
   {
-    img:   'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&q=80',
-    tag:   'SOLUTION 02 · IR 컨설팅',
-    loc:   '📊 투자자 덱 · 밸류에이션 · IR 리허설',
-    chip:  'SOLUTION 02 · IR 컨설팅',
-    title: '투자자는 숫자가 아닌 확신을 산다',
-    desc:  '피치덱은 데이터를 나열하는 문서가 아닙니다.<br>투자자의 언어로 시장 기회와 팀의 실행력을 증명하는 스토리텔링이 투자를 끌어냅니다.',
-    tags:  ['IR 피치덱', '밸류에이션', '투자 스토리'],
+    img:  'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&q=80',
+    tag:  'SOLUTION 02 · IR 컨설팅', loc: '📊 투자자 덱 · 밸류에이션 · IR 리허설',
+    chip: 'SOLUTION 02 · IR 컨설팅', title: '투자자는 숫자가 아닌 확신을 산다',
+    desc: '피치덱은 데이터를 나열하는 문서가 아닙니다.<br>투자자의 언어로 시장 기회와 팀의 실행력을 증명하는 스토리텔링이 투자를 끌어냅니다.',
+    tags: ['IR 피치덱', '밸류에이션', '투자 스토리'],
+    pillars: [
+      { num:'3%',   icon:'📊', name:'덱 통과율',  sub:'투자 제안서<br>평균 통과율', stat:'스토리텔링 재설계로<br><strong>통과율 8배↑</strong>' },
+      { num:'340+', icon:'💰', name:'IR 성공 건', sub:'오리진 파트너스<br>누적 IR 성공 건수', stat:'밸류에이션·텀시트<br><strong>협상까지 동행</strong>' },
+      { num:'6주',  icon:'🎯', name:'집중 기간',  sub:'전략적 IR 후<br>평균 투자 제안 수령', stat:'실전 Q&A<br><strong>리허설 완벽 대비</strong>' },
+    ],
   },
   {
-    img:   'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&q=80',
-    tag:   'SOLUTION 02 · AI 워크플로우',
-    loc:   '🤖 AI 도구 선정 · 자동화 프로세스 설계',
-    chip:  'SOLUTION 02 · AI 워크플로우',
-    title: 'AI로 실행하면 팀이 달라진다',
-    desc:  '10명이 할 일을 2명이 해내는 시대입니다.<br>AI 자동화 워크플로우 하나가 팀의 실행 속도와 비용 구조를 동시에 바꿉니다.',
-    tags:  ['AI 자동화', '업무 효율화', '린 실행'],
+    img:  'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&q=80',
+    tag:  'SOLUTION 02 · AI 워크플로우', loc: '🤖 AI 도구 선정 · 자동화 프로세스 설계',
+    chip: 'SOLUTION 02 · AI 워크플로우', title: 'AI로 실행하면 팀이 달라진다',
+    desc: '10명이 할 일을 2명이 해내는 시대입니다.<br>AI 자동화 워크플로우 하나가 팀의 실행 속도와 비용 구조를 동시에 바꿉니다.',
+    tags: ['AI 자동화', '업무 효율화', '린 실행'],
+    pillars: [
+      { num:'80%', icon:'🤖', name:'업무 자동화', sub:'AI 도입 기업<br>반복업무 절감률', stat:'n8n · Make · Zapier<br><strong>워크플로우 자동 설계</strong>' },
+      { num:'37%', icon:'📉', name:'CAC 절감',   sub:'AI 마케팅 도입 시<br>평균 CAC 절감률', stat:'타겟팅 자동화<br><strong>전환율 40% 향상</strong>' },
+      { num:'10배', icon:'⚡', name:'실행 속도',  sub:'AI 도구 활용 팀<br>생산성 증폭 배율', stat:'맞춤 AI 스택<br><strong>3주 내 자동화</strong>' },
+    ],
   },
   {
-    img:   'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80',
-    tag:   'SOLUTION 02 · 사업계획서',
-    loc:   '📝 정부지원 · 공모전 · 계획서 전략 작성',
-    chip:  'SOLUTION 02 · 사업계획서',
-    title: '서류가 돈이 되는 전략이 있다',
-    desc:  '정부지원은 운이 아닌 전략입니다.<br>평가위원의 채점 기준을 역설계한 프레임워크로 선정률을 구조적으로 높입니다.',
-    tags:  ['정부지원', '공모전 전략', '서류 전략'],
+    img:  'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80',
+    tag:  'SOLUTION 02 · 사업계획서', loc: '📝 정부지원 · 공모전 · 계획서 전략 작성',
+    chip: 'SOLUTION 02 · 사업계획서', title: '서류가 돈이 되는 전략이 있다',
+    desc: '정부지원은 운이 아닌 전략입니다.<br>평가위원의 채점 기준을 역설계한 프레임워크로 선정률을 구조적으로 높입니다.',
+    tags: ['정부지원', '공모전 전략', '서류 전략'],
+    pillars: [
+      { num:'8%',   icon:'📝', name:'평균 선정률', sub:'정부지원사업<br>일반 지원자 선정률', stat:'역설계 프레임<br><strong>선정률 3배↑</strong>' },
+      { num:'2.4억', icon:'💰', name:'평균 지원액', sub:'초기 스타트업<br>정부 지원 평균 수령액', stat:'비희석 자금<br><strong>지분 없이 성장</strong>' },
+      { num:'47개', icon:'🎯', name:'활용 프로그램', sub:'예비창업자<br>활용 가능 지원 수', stat:'최적 공고 분석<br><strong>전략적 타이밍 포착</strong>' },
+    ],
   },
   {
-    img:   'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80',
-    tag:   'SOLUTION 02 · 마케팅 전략',
-    loc:   '🎯 쐐기처럼 · 데이터처럼 · AI처럼',
-    chip:  'SOLUTION 02 · 마케팅 전략',
-    title: '마케팅이 생존이다',
-    desc:  'AI가 제품 개발의 진입 장벽을 낮추면서 경쟁은 기하급수적으로 심화됐습니다.<br>초기 단계일수록, 마케팅은 비용이 아닌 생존의 도구입니다.',
-    tags:  ['GTM 전략', '그로스 해킹', 'AI 레버리지'],
+    img:  'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80',
+    tag:  'SOLUTION 02 · 마케팅 전략', loc: '🎯 쐐기처럼 · 데이터처럼 · AI처럼',
+    chip: 'SOLUTION 02 · 마케팅 전략', title: '마케팅이 생존이다',
+    desc: 'AI가 제품 개발의 진입 장벽을 낮추면서 경쟁은 기하급수적으로 심화됐습니다.<br>초기 단계일수록, 마케팅은 비용이 아닌 생존의 도구입니다.',
+    tags: ['GTM 전략', '그로스 해킹', 'AI 레버리지'],
+    pillars: [
+      { num:'42%', icon:'🎯', name:'PMF 마케팅', sub:'PMF 검증 없이<br>시장에 나간 실패율', stat:'얼리어답터 20명의 반응<br><strong>= 광고비 100만원 이상</strong>' },
+      { num:'56%', icon:'📡', name:'채널 선택',  sub:'마케팅이 직·간접<br>원인인 스타트업 실패율', stat:'LTV : CAC<br><strong>3 : 1 이상 유지 필수</strong>' },
+      { num:'37%', icon:'⚡', name:'AI 실행',   sub:'AI 도입으로<br>줄어드는 CAC 비용', stat:'10배 레버리지<br><strong>실행 속도 혁신</strong>' },
+    ],
   },
 ];
 let s2Current = -1;
@@ -397,7 +415,7 @@ function s2Switch(idx) {
   if (tag) tag.textContent = d.tag;
   if (loc) loc.textContent = d.loc;
 
-  // 우측 패널 — chip / title / desc / tags 동적 교체
+  // 우측 — chip / title / desc / tags
   const chipEl  = document.querySelector('#slide02Panel .s3-chip-label');
   const titleEl = document.querySelector('#slide02Panel .s3-title');
   const descEl  = document.querySelector('#slide02Panel .s2-clean-desc');
@@ -407,6 +425,21 @@ function s2Switch(idx) {
   if (descEl)  descEl.innerHTML   = d.desc;
   if (tagsEl)  tagsEl.innerHTML   = d.tags
     .map(t => `<span class="s2-ktag">${t}</span>`).join('');
+
+  // 하단 3요소 카드 교체
+  const pillarsEl = document.querySelector('#slide02Panel .s2-pillars');
+  if (pillarsEl && d.pillars) {
+    pillarsEl.innerHTML = d.pillars.map((p, i) => `
+      <div class="s2-pillar${i === 1 ? ' s2-pillar-accent' : ''}">
+        <div class="s2-pillar-bignum">${p.num}</div>
+        <div class="s2-pillar-meta">
+          <span class="s2-pillar-icon">${p.icon}</span>
+          <span class="s2-pillar-name">${p.name}</span>
+        </div>
+        <div class="s2-pillar-sub">${p.sub}</div>
+        <div class="s2-pillar-stat">${p.stat}</div>
+      </div>`).join('');
+  }
 
   // 탭 활성화
   document.querySelectorAll('#s2HFlow .s2-hstep')
