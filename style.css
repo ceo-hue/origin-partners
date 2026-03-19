@@ -1060,6 +1060,51 @@ p {
   flex-shrink: 0;
 }
 
+/* 타이틀 한 줄 전용 — Slide 02 마케팅 */
+.s3-title-inline {
+  white-space: nowrap;
+  font-size: clamp(1.3rem, 2.0vw, 2.2rem);
+  margin-bottom: 10px;
+}
+
+/* ── 히어로 스타일 3단 서브카피 (Slide 02) ── */
+.s2-story {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 14px;
+  flex-shrink: 0;
+}
+
+/* 1단: 가볍고 작은 서술 — 히어로의 hf-h1-lead */
+.s2-story-lead {
+  font-size: 0.63rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.38);
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+}
+
+/* 2단: 굵고 임팩트 있는 핵심 — 히어로의 hf-h1-main */
+.s2-story-main {
+  font-size: clamp(0.95rem, 1.4vw, 1.25rem);
+  font-weight: 800;
+  color: rgba(255,255,255,0.92);
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.35);
+}
+
+/* 3단: 시안 포인트 결론 — 히어로의 hf-h1-brand */
+.s2-story-accent {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: rgba(0,212,255,0.80);
+  letter-spacing: 0.01em;
+  line-height: 1.55;
+  margin-top: 3px;
+}
+
 /* 설명 */
 .s3-desc {
   font-size: 0.76rem;
