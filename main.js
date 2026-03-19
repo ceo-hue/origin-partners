@@ -327,50 +327,7 @@ function initSlide01() {
 // ========================================
 
 function initSlide02() {
-  // 좌측 이미지만 서비스별로 전환 (우측은 마케팅 생존 스토리로 고정)
-  const s2Data = [
-    { img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80',
-      tag: 'SOLUTION 02 · BM 전략',      loc: '📋 비즈니스 모델 캔버스 · 수익 구조 설계' },
-    { img: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&q=80',
-      tag: 'SOLUTION 02 · IP 보호',      loc: '🔒 특허·상표·디자인권 · 변리사 파트너' },
-    { img: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&q=80',
-      tag: 'SOLUTION 02 · IR 컨설팅',    loc: '💼 투자자 덱 · 피칭 전략 · 밸류에이션' },
-    { img: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&q=80',
-      tag: 'SOLUTION 02 · AI 워크플로우', loc: '🤖 GPT 연동 · 자동화 · 실행 속도 3배' },
-    { img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80',
-      tag: 'SOLUTION 02 · 사업계획서',   loc: '📄 P.S.S.T 프레임워크 · 정부지원사업' },
-    { img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80',
-      tag: 'SOLUTION 02 · 마케팅 전략',  loc: '🎯 쐐기처럼 · 데이터처럼 · AI처럼' },
-  ];
-
-  const s2Steps    = document.querySelectorAll('.s2-hstep');
-  const s2ImgPanel = document.getElementById('s2ImgPanel');
-  if (!s2ImgPanel) return;
-
-  const s2ImgTag = document.getElementById('s2ImgTag');
-  const s2ImgLoc = document.getElementById('s2ImgLoc');
-
-  function s2Switch(idx) {
-    const d = s2Data[idx];
-    // 네비게이터 활성 상태
-    s2Steps.forEach((s, i) => s.classList.toggle('s2-active', i === idx));
-    // 왼쪽 이미지 크로스페이드
-    s2ImgPanel.style.opacity = '0';
-    setTimeout(() => {
-      s2ImgPanel.style.backgroundImage = `url('${d.img}')`;
-      s2ImgTag.textContent = d.tag;
-      s2ImgLoc.textContent = d.loc;
-      s2ImgPanel.style.opacity = '1';
-    }, 280);
-  }
-
-  s2Steps.forEach((step, idx) => {
-    step.addEventListener('click', () => s2Switch(idx));
-  });
-
-  // 마케팅 전략(6번째)을 기본으로 활성화
-  s2Switch(5);
-  return s2Switch;
+  // Slide 02 is now a static marketing storytelling slide — no switcher needed
 }
 
 // ========================================
@@ -545,9 +502,8 @@ function initGlassCarousel() {
 
   // 슬라이드별 초기화 함수 설정
   const triggerBars = initSlide01();   // slide 0: 바 차트 애니메이션
-  const s2SwitchFn  = initSlide02();   // slide 1: 서비스 플로우
+  initSlide02();                        // slide 1: 정적 마케팅 슬라이드
   const s3SwitchFn  = initSlide03();   // slide 2: 프로세스 플로우
-  let s2Inited = false;
   let s3Inited = false;
 
   function getClass(idx) {
@@ -568,7 +524,6 @@ function initGlassCarousel() {
 
     // 슬라이드별 진입 애니메이션
     if (current === 0 && triggerBars) triggerBars();
-    if (current === 1 && s2SwitchFn && !s2Inited) { s2Inited = true; s2SwitchFn(0); }
     if (current === 2 && s3SwitchFn && !s3Inited) { s3Inited = true; setTimeout(() => s3SwitchFn(0), 150); }
   }
 
