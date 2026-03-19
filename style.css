@@ -630,6 +630,79 @@ p {
   flex-shrink: 0;
 }
 
+/* ── Slide 02 서비스 네비게이터 ── */
+.s2-service-nav {
+  flex-shrink: 0;
+  margin-bottom: 14px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 14px;
+}
+
+.s2-nav-hd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.s2-nav-label {
+  font-size: 0.57rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+
+.s2-nav-hint {
+  font-size: 0.54rem;
+  color: rgba(255,255,255,0.22);
+}
+
+.s2-hflow {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+}
+
+.s2-hstep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 4px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.03);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.s2-hstep:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.14);
+}
+.s2-hstep.s2-active {
+  background: rgba(0,212,255,0.10);
+  border-color: rgba(0,212,255,0.40);
+}
+
+.s2-hnum {
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.30);
+  letter-spacing: 0.04em;
+}
+.s2-hstep.s2-active .s2-hnum { color: #00D4FF; }
+
+.s2-htitle {
+  font-size: 0.58rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.50);
+  text-align: center;
+  line-height: 1.35;
+  word-break: keep-all;
+}
+.s2-hstep.s2-active .s2-htitle { color: rgba(255,255,255,0.90); }
+
 /* ── Slide 02 핵심 3요소 — 수치+맥락 통합 카드 ── */
 .s2-pillars {
   display: grid;
