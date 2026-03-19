@@ -2554,6 +2554,42 @@ p {
 }
 
 /* ========================================
+   Glass Carousel — Tablet (≤1024px)
+   ======================================== */
+@media (max-width: 1024px) {
+  .glass-carousel-section {
+    min-height: 100svh;
+    padding-bottom: 0;
+  }
+
+  /* 3D 틸트 비활성 — 태블릿은 단순 페이드 전환 */
+  .gc-slide.is-prev,
+  .gc-slide.is-next { opacity: 0; pointer-events: none; }
+
+  /* 슬라이드 여백 줄이기 */
+  .gc-slide { inset: 2vh 2vw 76px; }
+
+  /* s3-frame: 좌 55% / 우 45% */
+  .s3-left  { flex: 0 0 52%; }
+  .s3-right { padding: 18px 18px 18px 16px; }
+
+  /* 타이틀 */
+  .s3-title        { font-size: clamp(1.1rem, 2.4vw, 1.7rem); }
+  .s3-title-inline { font-size: clamp(1.1rem, 2.4vw, 1.7rem); }
+
+  /* 3요소 카드: 간격 줄이기 */
+  .s2-pillars { gap: 6px; }
+  .s2-pillar  { padding: 11px 8px; }
+
+  /* 6탭: 3열 × 2행 */
+  .s2-hflow { grid-template-columns: repeat(3, 1fr); }
+
+  /* 하단 네비 */
+  .gc-nav-btn { width: 36px; height: 36px; font-size: 1rem; }
+  .gc-dots    { gap: 6px; }
+}
+
+/* ========================================
    Responsive - Mobile (768px 이하)
    ======================================== */
 
@@ -2795,6 +2831,88 @@ p {
 }
 
 /* ========================================
+   Glass Carousel — Mobile (≤768px)
+   ======================================== */
+@media (max-width: 768px) {
+  .glass-carousel-section {
+    min-height: auto;
+    padding: 16px 0 0;
+  }
+
+  /* 슬라이드 전체 화면 높이 해제 — 스크롤 허용 */
+  .gc-stage  { position: relative; min-height: 90svh; }
+  .gc-slide  {
+    position: relative;
+    inset: auto;
+    margin: 0 12px 72px;
+    opacity: 1 !important;
+    transform: none !important;
+    display: none; /* 비활성 슬라이드 숨김 */
+  }
+  .gc-slide.is-active { display: flex; flex-direction: column; }
+
+  /* s3-frame: 세로 스택 */
+  .s3-frame {
+    flex-direction: column;
+    border-radius: 18px;
+    height: auto;
+  }
+  .s3-left  {
+    flex: 0 0 220px;
+    height: 220px;
+    min-height: 220px;
+  }
+  .s3-right {
+    flex: 1;
+    padding: 18px 16px;
+    background: rgba(6,12,22,0.85);
+  }
+
+  /* 이미지 영역 */
+  .s3-img-full { height: 220px; }
+
+  /* 타이틀 */
+  .s3-title        { font-size: clamp(1.3rem, 5vw, 1.8rem); margin-bottom: 10px; }
+  .s3-title-inline { font-size: clamp(1.2rem, 5vw, 1.6rem); white-space: normal; }
+
+  /* 설명 */
+  .s2-clean-desc { font-size: 0.70rem; margin-bottom: 10px; }
+  .s3-desc       { font-size: 0.70rem; }
+
+  /* 태그 */
+  .s2-ktags, .s2-ktag { font-size: 0.58rem; }
+
+  /* 서비스 네비게이터: 3열 × 2행 */
+  .s2-service-nav { margin-bottom: 10px; padding-top: 10px; }
+  .s2-hflow { grid-template-columns: repeat(3, 1fr); gap: 5px; }
+  .s2-hstep { padding: 7px 4px; }
+  .s2-hnum  { font-size: 0.55rem; }
+  .s2-htitle { font-size: 0.55rem; }
+
+  /* 3요소 카드: 1열 세로 */
+  .s2-pillars { grid-template-columns: 1fr; gap: 6px; }
+  .s2-pillar  { flex-direction: row; align-items: center; gap: 10px; padding: 10px 12px; }
+  .s2-pillar-bignum { font-size: 1.3rem; min-width: 52px; text-align: center; }
+  .s2-pillar-meta   { flex-shrink: 0; }
+  .s2-pillar-sub, .s2-pillar-stat { font-size: 0.57rem; }
+
+  /* 통계 행 */
+  .s3-stats-row { gap: 12px; margin-bottom: 10px; }
+  .s3-stat-val  { font-size: 1.1rem; }
+
+  /* 5단계 플로우: 모바일 2행 배치 */
+  .s3-flow-panel { padding: 10px 12px; }
+  .s3-hflow { flex-wrap: wrap; gap: 6px; justify-content: flex-start; }
+  .s3-hstep { flex: 0 0 calc(33% - 4px); }
+
+  /* 하단 네비 */
+  .gc-nav {
+    padding: 12px 16px 16px;
+  }
+  .gc-nav-btn { width: 38px; height: 38px; }
+}
+
+/* ========================================
    Responsive - Small Mobile (480px 이하)
    ======================================== */
 
@@ -2956,6 +3074,32 @@ p {
   .horizontal-wrapper {
     min-height: -webkit-fill-available;
   }
+}
+
+/* ========================================
+   Glass Carousel — Small Mobile (≤480px)
+   ======================================== */
+@media (max-width: 480px) {
+  .gc-slide { margin: 0 8px 64px; }
+
+  .s3-left, .s3-img-full { height: 180px; min-height: 180px; flex: 0 0 180px; }
+  .s3-right { padding: 14px 12px; }
+
+  .s3-title-inline { font-size: clamp(1.1rem, 6vw, 1.4rem); }
+  .s3-title        { font-size: clamp(1.0rem, 5.5vw, 1.3rem); }
+
+  /* 6탭: 2열 × 3행 */
+  .s2-hflow { grid-template-columns: repeat(2, 1fr); }
+
+  /* 3요소 카드 더 압축 */
+  .s2-pillar-bignum { font-size: 1.1rem; min-width: 44px; }
+
+  /* 통계 행 모바일 압축 */
+  .s3-stat-label { font-size: 0.52rem; }
+  .s3-stat-val   { font-size: 0.95rem; }
+
+  /* 버튼 압축 */
+  .cta-primary, .s3-btn-ghost { font-size: 0.68rem !important; padding: 9px 14px !important; }
 }
 
 /* ========================================
