@@ -3064,25 +3064,25 @@ p {
   pointer-events: auto;
 }
 
-/* 이전 (좌측 틸트) */
+/* 이전 — Z 뒤로 + 페이드아웃 (좌우 겹침 없음) */
 .gc-slide.is-prev {
-  transform: rotateY(26deg) translateX(-56%) translateZ(-260px) scale(0.85);
-  opacity: 0.36;
+  transform: translateZ(-120px) scale(0.96);
+  opacity: 0;
   z-index: 2;
   pointer-events: none;
 }
 
-/* 다음 (우측 틸트) */
+/* 다음 — Z 뒤로 + 페이드아웃 */
 .gc-slide.is-next {
-  transform: rotateY(-26deg) translateX(56%) translateZ(-260px) scale(0.85);
-  opacity: 0.36;
+  transform: translateZ(-120px) scale(0.96);
+  opacity: 0;
   z-index: 2;
   pointer-events: none;
 }
 
-/* 숨김 (더 멀리) */
+/* 숨김 */
 .gc-slide.is-hidden {
-  transform: translateZ(-700px) scale(0.5);
+  transform: translateZ(-400px) scale(0.88);
   opacity: 0;
   z-index: 1;
   pointer-events: none;
