@@ -327,25 +327,88 @@ function initSlide01() {
 // ========================================
 
 const s2Data = [
-  { img: 'https://images.unsplash.com/photo-1553484771-047a44eee27a?w=1200&q=80',  tag: 'SOLUTION 02 · BM 전략',       loc: '🗂 비즈니스 모델 캔버스 · 수익 구조 설계' },
-  { img: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&q=80', tag: 'SOLUTION 02 · IP 보호',       loc: '⚖️ 특허 · 상표 · 기술보호 전략' },
-  { img: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1200&q=80',  tag: 'SOLUTION 02 · IR 컨설팅',     loc: '📊 투자자 덱 · 밸류에이션 · IR 리허설' },
-  { img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80', tag: 'SOLUTION 02 · AI 워크플로우',  loc: '🤖 AI 도구 선정 · 자동화 프로세스 설계' },
-  { img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80', tag: 'SOLUTION 02 · 사업계획서',    loc: '📝 정부지원 · 공모전 · 계획서 전략 작성' },
-  { img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80', tag: 'SOLUTION 02 · 마케팅 전략',   loc: '🎯 쐐기처럼 · 데이터처럼 · AI처럼' },
+  {
+    img:   'https://images.unsplash.com/photo-1553484771-047a44eee27a?w=1200&q=80',
+    tag:   'SOLUTION 02 · BM 전략',
+    loc:   '🗂 비즈니스 모델 · 수익 구조 · 린 설계',
+    chip:  'SOLUTION 02 · BM 전략',
+    title: '수익 구조가 전략이다',
+    desc:  'AI 시대엔 아이디어보다 지속 가능한 수익 구조가 먼저입니다.<br>린 캔버스 한 장이 투자자와 고객 모두를 설득하는 언어가 됩니다.',
+    tags:  ['린 캔버스', '수익 모델', 'PMF 검증'],
+  },
+  {
+    img:   'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&q=80',
+    tag:   'SOLUTION 02 · IP 보호',
+    loc:   '⚖️ 특허 · 상표 · 기술보호 전략',
+    chip:  'SOLUTION 02 · IP 보호',
+    title: '기술은 등록해야 자산이다',
+    desc:  '아이디어를 실행하는 순간, 카피캣은 이미 준비 중입니다.<br>특허·상표·기술보호를 선제적으로 확보해야 경쟁 우위가 법적으로 완성됩니다.',
+    tags:  ['특허 전략', '상표권', '기술 자산화'],
+  },
+  {
+    img:   'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&q=80',
+    tag:   'SOLUTION 02 · IR 컨설팅',
+    loc:   '📊 투자자 덱 · 밸류에이션 · IR 리허설',
+    chip:  'SOLUTION 02 · IR 컨설팅',
+    title: '투자자는 숫자가 아닌 확신을 산다',
+    desc:  '피치덱은 데이터를 나열하는 문서가 아닙니다.<br>투자자의 언어로 시장 기회와 팀의 실행력을 증명하는 스토리텔링이 투자를 끌어냅니다.',
+    tags:  ['IR 피치덱', '밸류에이션', '투자 스토리'],
+  },
+  {
+    img:   'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&q=80',
+    tag:   'SOLUTION 02 · AI 워크플로우',
+    loc:   '🤖 AI 도구 선정 · 자동화 프로세스 설계',
+    chip:  'SOLUTION 02 · AI 워크플로우',
+    title: 'AI로 실행하면 팀이 달라진다',
+    desc:  '10명이 할 일을 2명이 해내는 시대입니다.<br>AI 자동화 워크플로우 하나가 팀의 실행 속도와 비용 구조를 동시에 바꿉니다.',
+    tags:  ['AI 자동화', '업무 효율화', '린 실행'],
+  },
+  {
+    img:   'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80',
+    tag:   'SOLUTION 02 · 사업계획서',
+    loc:   '📝 정부지원 · 공모전 · 계획서 전략 작성',
+    chip:  'SOLUTION 02 · 사업계획서',
+    title: '서류가 돈이 되는 전략이 있다',
+    desc:  '정부지원은 운이 아닌 전략입니다.<br>평가위원의 채점 기준을 역설계한 프레임워크로 선정률을 구조적으로 높입니다.',
+    tags:  ['정부지원', '공모전 전략', '서류 전략'],
+  },
+  {
+    img:   'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80',
+    tag:   'SOLUTION 02 · 마케팅 전략',
+    loc:   '🎯 쐐기처럼 · 데이터처럼 · AI처럼',
+    chip:  'SOLUTION 02 · 마케팅 전략',
+    title: '마케팅이 생존이다',
+    desc:  'AI가 제품 개발의 진입 장벽을 낮추면서 경쟁은 기하급수적으로 심화됐습니다.<br>초기 단계일수록, 마케팅은 비용이 아닌 생존의 도구입니다.',
+    tags:  ['GTM 전략', '그로스 해킹', 'AI 레버리지'],
+  },
 ];
 let s2Current = -1;
 
 function s2Switch(idx) {
   if (idx === s2Current) return;
   s2Current = idx;
-  const d   = s2Data[idx];
+  const d = s2Data[idx];
+
+  // 좌측 이미지 + 태그
   const img = document.querySelector('#slide02Panel .s3-img');
   const tag = document.querySelector('#slide02Panel .s3-img-tag');
   const loc = document.querySelector('#slide02Panel .s3-img-loc');
   if (img) img.style.backgroundImage = `url('${d.img}')`;
   if (tag) tag.textContent = d.tag;
   if (loc) loc.textContent = d.loc;
+
+  // 우측 패널 — chip / title / desc / tags 동적 교체
+  const chipEl  = document.querySelector('#slide02Panel .s3-chip-label');
+  const titleEl = document.querySelector('#slide02Panel .s3-title');
+  const descEl  = document.querySelector('#slide02Panel .s2-clean-desc');
+  const tagsEl  = document.querySelector('#slide02Panel .s2-ktags');
+  if (chipEl)  chipEl.textContent = d.chip;
+  if (titleEl) titleEl.textContent = d.title;
+  if (descEl)  descEl.innerHTML   = d.desc;
+  if (tagsEl)  tagsEl.innerHTML   = d.tags
+    .map(t => `<span class="s2-ktag">${t}</span>`).join('');
+
+  // 탭 활성화
   document.querySelectorAll('#s2HFlow .s2-hstep')
     .forEach((el, i) => el.classList.toggle('s2-active', i === idx));
 }
