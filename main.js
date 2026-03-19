@@ -323,11 +323,35 @@ function initSlide01() {
 }
 
 // ========================================
-// Slide 02 — 6개 서비스 인터랙티브 플로우
+// Slide 02 — 6서비스 이미지 스위처 (우측 네비게이터)
 // ========================================
 
+const s2Data = [
+  { img: 'https://images.unsplash.com/photo-1553484771-047a44eee27a?w=1200&q=80',  tag: 'SOLUTION 02 · BM 전략',       loc: '🗂 비즈니스 모델 캔버스 · 수익 구조 설계' },
+  { img: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&q=80', tag: 'SOLUTION 02 · IP 보호',       loc: '⚖️ 특허 · 상표 · 기술보호 전략' },
+  { img: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1200&q=80',  tag: 'SOLUTION 02 · IR 컨설팅',     loc: '📊 투자자 덱 · 밸류에이션 · IR 리허설' },
+  { img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80', tag: 'SOLUTION 02 · AI 워크플로우',  loc: '🤖 AI 도구 선정 · 자동화 프로세스 설계' },
+  { img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80', tag: 'SOLUTION 02 · 사업계획서',    loc: '📝 정부지원 · 공모전 · 계획서 전략 작성' },
+  { img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80', tag: 'SOLUTION 02 · 마케팅 전략',   loc: '🎯 쐐기처럼 · 데이터처럼 · AI처럼' },
+];
+let s2Current = -1;
+
+function s2Switch(idx) {
+  if (idx === s2Current) return;
+  s2Current = idx;
+  const d   = s2Data[idx];
+  const img = document.querySelector('#slide02Panel .s3-img');
+  const tag = document.querySelector('#slide02Panel .s3-img-tag');
+  const loc = document.querySelector('#slide02Panel .s3-img-loc');
+  if (img) img.style.backgroundImage = `url('${d.img}')`;
+  if (tag) tag.textContent = d.tag;
+  if (loc) loc.textContent = d.loc;
+  document.querySelectorAll('#s2HFlow .s2-hstep')
+    .forEach((el, i) => el.classList.toggle('s2-active', i === idx));
+}
+
 function initSlide02() {
-  // Slide 02 is now a static marketing storytelling slide — no switcher needed
+  s2Switch(0);
 }
 
 // ========================================
