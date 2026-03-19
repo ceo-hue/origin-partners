@@ -3031,17 +3031,11 @@ p {
   z-index: 1;
 }
 
-/* ── 3D Stage ── */
+/* ── 3D Stage — perspective 제거 (각 슬라이드에 직접 적용) ── */
 .gc-stage {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  perspective: 1400px;
-  perspective-origin: 50% 50%;
   z-index: 2;
-  padding: 3vh 4vw 88px;
 }
 
 /* ── 슬라이드 공통 ── */
@@ -3052,37 +3046,37 @@ p {
   transition:
     transform 0.72s cubic-bezier(0.32, 0, 0.2, 1),
     opacity   0.60s ease;
-  transform-style: preserve-3d;
   border-radius: 24px;
+  background: #06080f;
 }
 
-/* 활성 (전면 중앙) */
+/* 활성 (전면 중앙) — perspective 직접 적용 → z-index 정상 동작 */
 .gc-slide.is-active {
-  transform: rotateY(0deg) translateZ(0) scale(1);
+  transform: perspective(1400px) rotateY(0deg) scale(1);
   opacity: 1;
   z-index: 3;
   pointer-events: auto;
 }
 
-/* 이전 — Z 뒤로 + 페이드아웃 (좌우 겹침 없음) */
+/* 이전 (좌측 — 활성 슬라이드 경계 밖으로) */
 .gc-slide.is-prev {
-  transform: translateZ(-120px) scale(0.96);
-  opacity: 0;
+  transform: perspective(1400px) rotateY(22deg) translateX(-108%) scale(0.82);
+  opacity: 0.28;
   z-index: 2;
   pointer-events: none;
 }
 
-/* 다음 — Z 뒤로 + 페이드아웃 */
+/* 다음 (우측 — 활성 슬라이드 경계 밖으로) */
 .gc-slide.is-next {
-  transform: translateZ(-120px) scale(0.96);
-  opacity: 0;
+  transform: perspective(1400px) rotateY(-22deg) translateX(108%) scale(0.82);
+  opacity: 0.28;
   z-index: 2;
   pointer-events: none;
 }
 
 /* 숨김 */
 .gc-slide.is-hidden {
-  transform: translateZ(-400px) scale(0.88);
+  transform: perspective(1400px) scale(0.88);
   opacity: 0;
   z-index: 1;
   pointer-events: none;
