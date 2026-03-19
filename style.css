@@ -623,109 +623,92 @@ p {
 
 /* ── Slide 02 단일 설명 ── */
 .s2-clean-desc {
-  font-size: 0.72rem;
-  color: rgba(255,255,255,0.50);
+  font-size: 0.71rem;
+  color: rgba(255,255,255,0.48);
   line-height: 1.85;
   margin-bottom: 14px;
   flex-shrink: 0;
 }
 
-/* ── Slide 02 여백 분배 ── */
-.s2-spacer { flex: 1; min-height: 12px; }
-
-/* ── Slide 02 생존 수치 ── */
-.s2-survival {
-  display: flex;
-  align-items: stretch;
-  margin-bottom: 12px;
-  flex-shrink: 0;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  padding-top: 16px;
-}
-
-.s2-sv-item {
-  flex: 1;
-  text-align: center;
-  padding: 4px 0;
-}
-
-.s2-sv-num {
-  font-size: 2.0rem;
-  font-weight: 900;
-  color: rgba(255,255,255,0.35);
-  line-height: 1;
-  letter-spacing: -0.04em;
-}
-.s2-sv-unit { font-size: 1.0rem; font-weight: 700; }
-
-.s2-sv-item.s2-sv-accent .s2-sv-num { color: #00D4FF; }
-
-.s2-sv-label {
-  font-size: 0.57rem;
-  color: rgba(255,255,255,0.32);
-  line-height: 1.45;
-  margin-top: 6px;
-  letter-spacing: 0.01em;
-}
-.s2-sv-item.s2-sv-accent .s2-sv-label { color: rgba(0,212,255,0.55); }
-
-/* 수직 구분선 */
-.s2-sv-divline {
-  width: 1px;
-  background: rgba(255,255,255,0.08);
-  flex-shrink: 0;
-  margin: 4px 0;
-}
-
-/* ── Slide 02 마케팅 핵심 3요소 ── */
+/* ── Slide 02 핵심 3요소 — 수치+맥락 통합 카드 ── */
 .s2-pillars {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
+  margin-top: auto;        /* 상단 콘텐츠 자연 정렬, 카드는 하단 */
   flex-shrink: 0;
 }
 
 .s2-pillar {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 16px 12px;
+  gap: 0;
+  padding: 18px 14px 16px;
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 14px;
   transition: background 0.25s, border-color 0.25s;
 }
 .s2-pillar:hover {
-  background: rgba(0,212,255,0.06);
-  border-color: rgba(0,212,255,0.22);
+  background: rgba(255,255,255,0.065);
+  border-color: rgba(255,255,255,0.14);
+}
+.s2-pillar.s2-pillar-accent {
+  background: rgba(0,212,255,0.05);
+  border-color: rgba(0,212,255,0.18);
+}
+.s2-pillar.s2-pillar-accent:hover {
+  background: rgba(0,212,255,0.09);
+  border-color: rgba(0,212,255,0.30);
 }
 
-.s2-pillar-icon {
-  font-size: 1.4rem;
+/* 대형 수치 — 카드 핵심 */
+.s2-pillar-bignum {
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.22);
+  letter-spacing: -0.05em;
   line-height: 1;
+  margin-bottom: 10px;
 }
+.s2-pillar-bignum span {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.s2-pillar-accent .s2-pillar-bignum { color: #00D4FF; }
 
+/* 아이콘 + 이름 한 줄 */
+.s2-pillar-meta {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 7px;
+}
+.s2-pillar-icon { font-size: 0.95rem; line-height: 1; }
 .s2-pillar-name {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 800;
-  color: rgba(255,255,255,0.90);
+  color: rgba(255,255,255,0.88);
   letter-spacing: -0.01em;
-  margin-top: 2px;
 }
 
+/* 맥락 설명 */
 .s2-pillar-sub {
-  font-size: 0.58rem;
-  color: rgba(255,255,255,0.36);
-  line-height: 1.5;
+  font-size: 0.57rem;
+  color: rgba(255,255,255,0.33);
+  line-height: 1.6;
   flex: 1;
+  margin-bottom: 10px;
 }
 
+/* 하단 강조 데이터 */
 .s2-pillar-stat {
-  font-size: 0.60rem;
-  color: rgba(0,212,255,0.70);
-  line-height: 1.4;
-  padding-top: 6px;
-  border-top: 1px solid rgba(0,212,255,0.12);
+  font-size: 0.57rem;
+  color: rgba(0,212,255,0.62);
+  line-height: 1.5;
+  padding-top: 9px;
+  border-top: 1px solid rgba(0,212,255,0.10);
 }
 .s2-pillar-stat strong { color: #00D4FF; font-weight: 700; }
 
