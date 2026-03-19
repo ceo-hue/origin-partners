@@ -754,6 +754,10 @@ p {
   position: relative;
   transition: opacity 0.30s ease;
 }
+/* sp-panel 없을 때 이미지가 좌측 전체 차지 */
+.s3-img.s3-img-full {
+  flex: 1 1 100%;
+}
 
 .s3-img-grad {
   position: absolute;
