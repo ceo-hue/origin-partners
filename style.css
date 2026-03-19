@@ -621,6 +621,70 @@ p {
   transition: all 0.2s;
 }
 
+/* ── Slide 02 마케팅 핵심 3요소 카드 ── */
+.s2-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: auto;
+  background: rgba(0,0,0,0.30);
+  border: 1px solid rgba(255,255,255,0.11);
+  border-radius: 16px;
+  padding: 16px 12px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.10);
+}
+
+.s2-pillar {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 12px 10px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 11px;
+  transition: background 0.25s, border-color 0.25s;
+}
+.s2-pillar:hover {
+  background: rgba(0,212,255,0.07);
+  border-color: rgba(0,212,255,0.25);
+}
+
+.s2-pillar-icon {
+  font-size: 1.35rem;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.s2-pillar-name {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.s2-pillar-sub {
+  font-size: 0.60rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.4;
+}
+
+.s2-pillar-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(0,212,255,0.18);
+  margin: 4px 0;
+}
+
+.s2-pillar-data {
+  font-size: 0.60rem;
+  color: rgba(0,212,255,0.75);
+  line-height: 1.5;
+}
+.s2-pillar-data strong {
+  color: #00D4FF;
+  font-weight: 700;
+}
+
 /* Process (03) — Slide 03 재설계 */
 .slide-difference {
   background:
