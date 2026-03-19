@@ -634,16 +634,17 @@ p {
 .s2-pillars {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;   /* 단일 행이 컨테이너 전체 높이를 채움 */
   gap: 8px;
-  margin-top: auto;        /* 상단 콘텐츠 자연 정렬, 카드는 하단 */
-  flex-shrink: 0;
+  flex: 1;                   /* 남은 세로 공간 전부 차지 */
+  margin-top: 16px;
+  min-height: 0;             /* flex 자식 축소 버그 방지 */
 }
 
 .s2-pillar {
   display: flex;
   flex-direction: column;
-  gap: 0;
-  padding: 18px 14px 16px;
+  padding: 20px 16px;
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 14px;
